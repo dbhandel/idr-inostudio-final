@@ -1,0 +1,115 @@
+.page {
+  position: relative;
+}
+
+.page.type-pin {
+  cursor: crosshair!important;
+}
+
+.pin {
+  position: absolute;
+  width: 35px;
+  height: 35px;
+  color: #263238;
+  background-color: currentcolor;
+}
+
+.pin .pin__icon {
+  width: 23px;
+  height: 23px;
+  padding: 5px;
+}
+
+.pin::before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-width: 10px 7px;
+  border-style: solid;
+}
+
+.pin__text {
+  box-sizing: border-box;
+  display: block;
+  width: 178px;
+  height: 100%;
+  color: #95c8b1;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 19px;
+  text-align: center;
+  white-space: nowrap;
+  line-height: 35px; /* height pin */
+  cursor: pointer;
+}
+
+.pin__text:hover {
+  color: #fff;
+}
+
+.pin__viewport {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 0;
+  overflow: hidden;
+  transition: width .25s ease;
+  background-color: currentcolor;
+}
+
+.pin.mod-left::before {
+  left: 0;
+}
+
+.pin.mod-left .pin__text {
+  border-left: 1px solid;
+}
+
+.pin.mod-left .pin__viewport {
+  left: 100%;
+}
+
+.pin.mod-right::before {
+  right: 0;
+}
+
+.pin.mod-right .pin__text {
+  border-right: 1px solid;
+}
+
+.pin.mod-right .pin__viewport {
+  right: 100%;
+}
+
+.pin.mod-top::before {
+  bottom: 100%;
+}
+
+.pin.mod-bottom::before {
+  top: 100%;
+}
+
+.pin.mod-left.mod-top::before {
+  border-color: transparent transparent currentcolor currentcolor;
+}
+
+.pin.mod-right.mod-top::before {
+  border-color: transparent currentcolor currentcolor transparent;
+}
+
+.pin.mod-left.mod-bottom::before {
+  border-color: currentcolor transparent transparent currentcolor;
+}
+
+.pin.mod-right.mod-bottom::before {
+  border-color: currentcolor currentcolor transparent transparent;
+}
+
+.pin.is-open .pin__viewport {
+  width: 178px;
+}
+
+
+
+

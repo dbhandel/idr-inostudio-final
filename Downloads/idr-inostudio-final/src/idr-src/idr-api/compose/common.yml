@@ -1,0 +1,17 @@
+version: '2'
+services:
+  rabbitmq:
+    image: rabbitmq:3.6.6
+  postgres:
+    image: postgres:9.6.1
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+  server:
+    build: ..
+    environment:
+      NODE_ENV: "staging"
+      PORT: "5000"
+      DB_NAME: "idr_staging"
+      DB_USER: "postgres"
+      DB_PASSWORD: "postgres"

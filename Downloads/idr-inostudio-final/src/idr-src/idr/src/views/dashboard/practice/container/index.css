@@ -1,0 +1,65 @@
+@import 'styles/init';
+@import 'styles/init';
+
+.header {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  z-index: 1;
+  background-color: var(--white);
+}
+
+.wrapper {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+  overflow-x: hidden;
+}
+
+.container {
+  display: flex;
+  overflow: hidden;
+  height: 100%;
+
+  &.animate{
+     & > .practice {
+      transition: all .3s;
+    }
+  }
+
+  & .practice {
+    padding-top: 40px;
+    min-width: 100%;
+    position: absolute;
+    overflow: hidden;
+    height: 100%;
+    left: 0;
+    & .answer {
+      transition: top 0.3s;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      left: 0;
+      top: 100%;
+      margin-top: -40px; /*need convert to rem*/
+
+      &.expanded {
+        top: 0;
+        margin-top: 11px; /*need convert to rem*/
+      }
+    }
+    & .rating {
+      transition: bottom 0.3s;
+      width: 100%;
+      position: absolute;
+      left: 0;
+      bottom: -86px;
+      &.expanded {
+        bottom: 0;
+      }
+    }
+  }
+}
+

@@ -1,0 +1,70 @@
+@import 'styles/init';
+
+:root {
+  --padding-for-component: 1rem 1.5rem;
+}
+
+.input-component {
+  margin: 1.9rem auto;
+  position: relative;
+
+  &.has-icon{
+    & input{
+      padding-right: 3.5rem;
+    }
+  }
+
+  & svg {
+    position: absolute;
+    right: 0;
+    width: 1.8rem;
+    margin-right: 1rem;
+    top: 0.8rem;
+    cursor: pointer;
+    fill: var(--dark-grey);
+    z-index: 2;
+
+    &:hover {
+      fill: color(var(--dark-grey) lightness(22%));
+    }
+  }
+
+  & input {
+    background-color: color(var(--white) a(90%));
+    border: none;
+    padding: 1rem 1.5rem;
+    outline: none;
+    width: 100%;
+    font-size: 1.3rem;
+    color: var(--dark-grey);
+    /* to correct for browsers' rendering of input boxes */
+    border-radius: 0;
+    margin: 0;
+
+    &::placeholder {
+      color: var(--medium-grey);
+    }
+
+  }
+
+  & .error-message {
+    background-color: color(var(--red) a(60%));
+    width: 100%;
+    color: var(--white);
+    padding: var(--padding-for-component);
+    font-size: 1.1rem;
+    border-top: 0.4rem solid var(--red);
+  }
+
+  &.not-transparent {
+    & input {
+      background: var(--light-grey);
+      &:focus {
+        background: var(--light-green);
+      }
+    }
+    & .error-message {
+      background-color: var(--dark-red);
+    }
+  }
+}

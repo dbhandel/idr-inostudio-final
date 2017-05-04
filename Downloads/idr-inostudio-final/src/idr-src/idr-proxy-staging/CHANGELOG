@@ -1,0 +1,7 @@
+v1.0
+-------------------------------------------------------
+- Initial commit
+- Uses registry.git.leebenson.com/utils/nginx-staging:1.0
+- Adds http (port 80) template that redirects to https (443)
+- Adds https (port 443) that uses *.staging.leebenson.com
+- Adds start.sh that updates on run by passing DOMAIN and UPSTREAM env

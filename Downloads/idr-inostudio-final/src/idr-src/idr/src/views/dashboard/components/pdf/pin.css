@@ -1,0 +1,88 @@
+@import 'styles/init';
+
+.panel {
+  background-color: var(--dark-grey);
+  display: flex;
+  color: var(--green);
+  align-items: flex-end;
+  justify-content: space-around;
+  padding: 1.5rem 0 0.5rem 0;
+  margin-bottom: 50px;
+  box-shadow: 0px -5px 10px -5px #263238;
+  position: relative;
+
+  @mixin XS {
+    padding: 1.5rem 0 0.5rem 0.5rem;
+  }
+
+  @mixin S {
+    padding: 1.5rem 0 0.5rem 5rem;
+  }
+
+  & .panel-prompt {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.8em;
+    width: 20rem;
+    justify-content: center;
+    display: none;
+    padding-bottom: 16px;
+
+    @mixin XXXS {
+      display: flex;
+    }
+  }
+
+  & button {
+    background: transparent;
+    border: transparent;
+    color: var(--green);
+    padding: 0;
+    line-height: inherit;
+    padding-bottom: 10px;
+  }
+
+  & .icon-wrap {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    align-items: center;
+    width: 5rem;
+
+    & svg {
+      width: 30px;
+      fill: var(--green);
+      margin-bottom: 5px;
+    }
+  }
+
+  & .group-icons_left {
+    display: flex;
+    align-items: flex-end;
+    flex: 1;
+  }
+
+  & .group-icons_right {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    flex: 1;
+  }
+
+  & .icon-wrap--active {
+    box-shadow: 0px 7px 0px 0px white;
+  }
+}
+
+.container {
+  width: 90%;
+  margin: 0 auto;
+
+  & .content {
+    width: 100%;
+    height: 500px;
+    border: 1px dashed var(--dark-grey);
+    position: relative;
+    overflow: hidden;
+  }
+}

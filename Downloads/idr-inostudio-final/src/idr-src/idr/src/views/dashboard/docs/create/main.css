@@ -1,0 +1,207 @@
+@import 'styles/init';
+
+:root {
+  --sizing: 1.8rem;
+}
+
+.create-recall-wr {
+  width: 100%;
+  height: calc(100% - calc(var(--button-size) + var(--button-description-height + var(--left-panel-indent-bottom))));
+  @mixin M {
+    height: calc(100% - calc(var(--button-size) + var(--button-description-height)));
+  }
+}
+
+.create-recall {
+  padding: 1.9rem 1.8rem 0 1.8rem;
+  width: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 100%;
+
+  & .row {
+    display: flex;
+    margin-bottom: 1.9rem;
+    align-items: center;
+    & .icon {
+      margin: 0 13px 0 0;
+    }
+    &.wysiwyg {
+      align-items: inherit;
+      & .icon {
+        padding: 43px 0 0;
+      }
+    }
+    &.calendar{
+      & .icon{
+        align-self: flex-start;
+        margin-top: 5px;
+      }
+    }
+    &.tags{
+      & .icon {
+        align-self: flex-start;
+        margin-top: 8px;
+      }
+    }
+
+    /* the icons on the far left */
+    & svg {
+      fill: var(--dark-grey);
+      width: 1.4rem;
+
+      &.rotate {
+        transform: rotate(270deg);
+      }
+    }
+
+    & .text {
+      color: var(--medium-grey);
+    }
+
+    & input, & textarea {
+      flex: 1;
+      color: var(--medium-grey);
+      border: none;
+      outline: none;
+      font-size: 1rem;
+      resize: none;
+    }
+
+    & .camera {
+      fill: var(--medium-grey);
+      cursor: pointer;
+      width: var(--sizing);
+      flex-shrink: 0;
+      align-self: flex-start;
+    }
+
+    & .input-container {
+      width: 100%;
+
+      & > span {
+        display: none;
+        min-width: 70px;
+      }
+
+      & .source {
+        display: block;
+      }
+
+      & .input-inner {
+        display: flex;
+        flex-direction: column;
+        color: var(--medium-grey);
+        width: 100%;
+        position: relative;
+
+        & svg {
+          width: 0.8rem;
+          margin-left: 0;
+        }
+
+        & .add-deadline {
+          cursor: pointer;
+          font-size: 1rem;
+          padding: 7px;
+          padding-left: 0;
+          color: #cccccc;
+          background: none;
+          border: 0;
+          width: auto;
+          margin-right: auto;
+        }
+      }
+
+      & .deadline {
+        display: flex;
+        align-items: center;
+        width: 100%;
+
+        & .deadline-form {
+          width: 100%;
+          border: 1px solid var(--mid-grey);
+          border-bottom: 0;
+          padding: 0 10px;
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+
+          & > input {
+            color: var(--dark-grey);
+            min-width: 1rem;
+            width: 1rem;
+            height: 38px;
+            border-right: 1px solid var(--mid-grey);
+            &::-webkit-input-placeholder {
+              font-weight: normal;
+            }
+          }
+
+          & > svg {
+            width: 1.5rem;
+            display: none;
+          }
+
+          & .native-picker {
+            margin-right: -10px;
+            border-left: 1px solid var(--mid-grey);
+            font-size: 1rem;
+          }
+
+          @mixin XS {
+            width: 100%;
+            height: 40px;
+
+            & > svg {
+              display: block;
+              width: 1.4rem;
+            }
+          }
+        }
+
+        &:last-of-type .deadline-form {
+          border-bottom: 1px solid var(--mid-grey);
+        }
+
+        & svg {
+          fill: var(--green);
+        }
+
+        & .close {
+          margin-left: 5px;
+          cursor: pointer;
+
+          & svg {
+            width: 1.3rem;
+          }
+        }
+      }
+
+      @mixin XS {
+        display: flex;
+        min-height: 40px;
+        & > span {
+          display: block;
+          position: relative;
+          top: 10px;
+        }
+      }
+    }
+  }
+
+}
+
+.error {
+  border-top: 5px solid var(--red);
+  color: var(--red);
+  font-size: 1.4em;
+  margin-bottom: 20px;
+  line-height: 2;
+  margin-left: 2em;
+}
+
+.isError {
+  border: 2px solid var(--red);
+  padding: 15px;
+}

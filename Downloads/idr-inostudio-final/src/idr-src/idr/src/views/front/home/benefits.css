@@ -1,0 +1,105 @@
+@import 'styles/init';
+
+.section {
+  background-color: var(--light-green);
+
+  display: flex;
+  flex-direction:column;
+  width: 100%;
+
+  /* Padding on all elements */
+  & > * {
+    padding: var(--spacing);
+    width: 100%;
+  }
+
+  & header {
+
+    & h2, & h3 {
+      font-family: "Roboto-Regular";
+      font-size: 1.8rem;
+      max-width: 100%;
+      text-transform: uppercase;
+    }
+
+    & h2 {
+      color: var(--green);
+    }
+
+    & h3 {
+      color: var(--dark-blue);
+    }
+  }
+
+  /* Pull <article>s tag closer to siblings */
+  & article {
+    padding-top: 0;
+  }
+
+  /* Icons */
+  & article:last-of-type {
+
+    display: flex;
+    flex-wrap: wrap;
+
+    & figure {
+      width: 100%;
+      flex-basis: 100%;
+
+      display: flex;
+      flex-direction: column;
+
+      & > * {
+        padding: 0.625rem 0;
+      }
+
+      & h4 {
+        font-family: "Roboto-Regular";
+        font-size: 1.8rem;
+        color: var(--dark-blue);
+      }
+
+      & img {
+        align-self: center;
+        width: 100%;
+        max-width: 15.625rem;
+      }
+
+      & p {
+        & em {
+          font-family:"Roboto-Regular";
+        }
+      }
+
+    }
+  }
+
+  /* Expand on tablet size */
+  @media (--tablet) {
+
+    align-items: center;
+    justify-content: center;
+
+    /* Pull up to the previous 'desktop' image */
+    margin-top: -5rem;
+
+    & > * {
+      max-width: 46.875rem;
+    }
+
+    & article:last-of-type {
+      & figure {
+        width: 50%;
+        flex-basis: auto;
+        padding: 0 var(--spacing);
+
+        & img {
+          align-self: flex-start;
+          width: auto;
+          height: 9.375rem;
+        }
+      }
+    }
+
+  }
+}

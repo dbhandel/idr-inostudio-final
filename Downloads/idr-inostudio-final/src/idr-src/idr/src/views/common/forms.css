@@ -1,0 +1,109 @@
+@import 'styles/init';
+
+:root {
+  --button-colour: #e6af3a;
+  --reset-password-block-height: 170px;
+  --above: 3.7rem; /* because of login/register form title */
+}
+
+.form {
+  width: 22rem;
+
+  & h1 {
+    color: var(--white);
+    text-align: center;
+    font-size: 1.7rem;
+    margin-bottom: 2rem;
+    font-weight: 100;
+  }
+
+  & .send-email-input{
+    & > * {
+      margin: 0 !important;
+    }
+    min-height: var(--reset-password-block-height);
+  }
+
+  & .buttons {
+    margin-top: 6rem;
+    margin-bottom: 1rem;
+
+    & button {
+      width: 100%;
+      border: none;
+      padding: 1rem 3rem;
+      font-size: 1.3rem;
+      outline: none;
+
+      &.submit {
+        background-color: var(--button-colour);
+        color: var(--white);
+        font-weight: bold;
+
+        &:hover {
+          background-color: color(var(--button-colour) lightness(-11%));
+        }
+      }
+
+      &.forgot-password {
+        cursor: pointer;
+        background-color: var(--dark-grey);
+        color: white;
+      }
+
+      &.delete {
+        background-color: var(--red);
+        color: var(--white);
+        &:hover {
+          background-color: color(var(--red) lightness(-11%));
+        }
+      }
+
+    }
+  }
+
+  & .above-title{
+    color: white;
+    text-align: center;
+    margin-bottom: 0;
+    font-size: 1.2rem;
+    min-height: var(--above);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    & span{
+      align-self: flex-end;
+      padding-bottom: 1rem;
+    }
+  }
+
+  & .success-block{
+    & .legend{
+      &-outter{
+        min-height: var(--reset-password-block-height);
+        margin-top: var(--above);
+      }
+      &-inner{
+        background-color: color(var(--green) a(90%));
+        padding-top: 1rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
+
+        & .text{
+          padding-bottom: 1rem;
+          line-height: 1.3rem;
+          font-size: 1.1rem;
+        }
+        & .highlighted{
+          text-decoration: underline;
+        }
+      }
+    }
+
+    & .buttons{
+      margin: 1.9rem auto;
+    }
+  }
+
+}

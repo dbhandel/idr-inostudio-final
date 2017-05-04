@@ -1,0 +1,53 @@
+@import '~react-dates/css/variables.scss';
+@import '~react-dates/css/styles.scss';
+
+.SingleDatePickerInput {
+  border: none;
+  text-align: right;
+
+  & input {
+    cursor: pointer;
+  }
+
+  & .DateInput {
+    width: 110px;
+    padding: 0;
+    line-height: 25px;
+    height: 30px;
+
+    & input#date_input {
+      min-width: calc(100% + 10px);
+      @media only screen and (min-width: 560px) {
+        min-width: calc(100% + 30px);
+      }
+    }
+  }
+}
+
+/* to make sure it sits above the FroalaEditor toolbar */
+.SingleDatePicker__picker {
+  padding-bottom: 2rem;
+  z-index: 255;
+
+  &--full-screen-portal {
+    z-index: 11;
+  }
+  &--invisible {
+    /* TODO hack */
+    padding: 0;
+    height: 0;
+    & * {
+      height: inherit !important;
+    }
+  }
+}
+
+.DateInput__display-text {
+  font-size: 16px;
+}
+
+.DateInput__display-text--focused {
+  background: transparent;
+  border-color: transparent;
+  color: #5F686D;
+}

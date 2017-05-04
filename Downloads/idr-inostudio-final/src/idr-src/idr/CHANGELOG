@@ -1,0 +1,1300 @@
+0.63.2
+-------------------------------------------------------
+* Brings README up to date, and adds commentary to `client.js` and `server.js` entry points, to aid hand-over to new developer
+
+0.63.1
+-------------------------------------------------------
+* Fixes Froala license key for idorecall.tech
+
+0.63.0
+-------------------------------------------------------
+* Moves staging to *.idorecall.tech
+* Bumps Node to 7.4
+* Improves Dockerfile build to use Alpine-based Node image
+
+0.62.0
+-------------------------------------------------------
+* Optimises bundle size with Webpack code splitting
+
+0.61.2
+-------------------------------------------------------
+* Merges !172 - !189
+* Fixes scrolling on the front page
+
+0.61.1
+-------------------------------------------------------
+* Clears recalls store after logout, to prevent artefacts
+
+0.61.0
+-------------------------------------------------------
+* Adds React Modal, for pop-over messages
+* Adds inline error handling for recall question, answer, tags and deadlines
+* Adds `Scratchpad` store, to handle current recall being created/edited
+* Adds implicit draft saving when adding a new recall and navigating to another route
+* Refactors item stores to use new `Search` base
+* Adds `ContextStore.copy` method, to copy the context to a new store class instance
+* Fixes create recall error handling to use FormStore's built-in `this.errors` map
+* Adds query string handling to GET requests made to the API
+* Adds `Search` base class for items/docs to derive from
+* Fixes prop types for `Calendar` component, to accept alternative date formats
+* Adds Froala component `handleChange` prop, for passing model changes upstream
+* Fixes `Master Layout` component props to show the current recall being edited
+* Adds search facility to recalls `Explore`, for searching on tags & free-form text
+* Refactors stores with concept of 'cursors' to point to existing recall data
+* Improves search statistics to show the current number of returned records
+* Adds `recalls.cursorToRecall` to turn an existing cursor into a recall store instance
+
+0.60.4
+-------------------------------------------------------
+* Removes yarn due to problems initialising certain libraries
+* Bumps Node to 7.2.1
+* Fixes over-eager loading of recall tags after every `recall.mergeData`
+
+0.60.3
+-------------------------------------------------------
+* Removes 'docker rmi' (image delete) step from build process
+* Improves `CreateRecallMain`: Removes state, turns into a pure function
+* Fixes issue with '+Add new deadline'. Now renders as a borderless button rather than hacking an input tag
+* Fixes edge case where entering a deadline label 'bleeds' into another deadline
+* Merges !163 - !165, !167 - !171
+
+0.60.2
+-------------------------------------------------------
+* Improves handling of 'Select All' on recall search; now allows (De)select All
+* Refactors `RecallStore` to extend from `ItemStore` (now `RecallItems`)
+
+0.60.1
+-------------------------------------------------------
+* Fixes linting
+* Fixes Storybook building
+
+0.60.0
+-------------------------------------------------------
+* Implements real-time recall tags with the search bar
+* Refactors search bar component and store
+* Replaces 'application/x-www-form-urlencoded' POST with 'application/json' to improve array nesting
+
+0.59.1
+-------------------------------------------------------
+* Fixes registration
+
+0.59.0
+-------------------------------------------------------
+* Moves redundant stores to `stories/stores` for development use only
+* Fixes Storybook building
+
+0.58.2
+-------------------------------------------------------
+* Fixes linting
+
+0.58.1
+-------------------------------------------------------
+* Fixes server loading by wrapping dangerous `window` block in a `SERVER` check.
+* Merges: !141 -> !162
+
+0.58.0
+-------------------------------------------------------
+* Removes Airbnb syntax restriction of For..Of
+* Replaces `request.js` lib for universal fetch polyfill (saving 1mb+)
+* Refactors API call logic
+* Fixes `Explore` view when connecting to API v2
+* Fixes error handling for fetch
+* Adds `formData` helper to convert an object to a HTTP form-data POST
+* Adds EventEmitter -- now all `ContextStore` sub-classes can emit/listen to events
+* Removes redundant `create-recall` store
+* Removes redundant `dashboard/edit` + css view
+* Refactors `stores/dashboard/recalls` for improved DB column matching
+* Adds .get/.post/.put/.delete methods to our custom API request handler
+
+* Adds NPM:
+"eventemitter3": "^2.0.2",
+"isomorphic-fetch": "^2.2.1",
+"query-string": "^4.2.3",
+
+0.57.8
+-------------------------------------------------------
+* Removes link from 'Forgot password' on dashboard
+* Improves layout of Forgot password page
+
+0.57.7
+-------------------------------------------------------
+* Re-implements NPM (yarn is still broken on post-install build steps)
+
+* Bumps NPM:
+"froala-editor": "^2.4.0-rc.1",
+"mobx-react": "^4.0.3",
+"babel-loader": "^6.2.8"
+"eslint-plugin-jsx-a11y": "^3.0.1"
+"webpack-merge": "^1.0.2"
+
+0.57.6
+-------------------------------------------------------
+* Attempts to fix yarn build step
+
+* Bumps NPM:
+"babel-loader": "^6.2.8"
+
+0.57.5
+-------------------------------------------------------
+* Fixes yarn dependencies, to build `node-sass` successfully
+* Updates Dockerfile to build via yarn instead of npm
+* Bumps Node to 7.2.0
+
+* Add NPM:
+"node-sass": "^3.13.0",
+"postcss-cssnext": "^2.9.0",
+"postcss-import": "^9.0.0",
+"postcss-loader": "^1.2.0",
+
+0.57.4
+-------------------------------------------------------
+* Removes all traces of Primus
+
+0.57.3
+-------------------------------------------------------
+* Adds 'NoRecalls' component to explorer, to show when recall count === 0
+
+0.57.2
+-------------------------------------------------------
+* Fixes 'get started' / registering for a new user account
+
+0.57.1
+-------------------------------------------------------
+* Fixes Storybook webpack config for `request-promise-native`
+
+0.57.0
+-------------------------------------------------------
+* Adds working Recall CRUD
+* Adds Recall edit panel handler - now recall instances can be updated
+* Adds Recall trash bar handler, for deleting a recall
+* Adds `RequestStore` for making API calls with isomorphic request tokens
+* Fixes Webpack configuration for use with request (WIP: will currently break Storybook!)
+* Adds Webpack JSON loader
+
+* Adds NPM:
+"request-promise-native": "^1.0.3",
+
+0.56.1
+-------------------------------------------------------
+* Adds `getCurrent` to retrieve currently selected recall
+
+0.56.0
+-------------------------------------------------------
+* Merges !139 - * remover Brutal font (@ino.alexey)
+* Merges !140 - fixed some css issues (@ino.alexey)
+* Adds 'edit' panel when a recall is clicked in Explore (WIP: doesn't yet populate fields)
+* Closes #153 by implementing max of 3 deadlines per recall
+
+0.55.0
+-------------------------------------------------------
+* Merges !137 - * fixed left panel (@ino.alexey)
+* Merges !138 - Features/update recall icons (@ino.alex)
+* Fixes Cancel/Save handlers in `CreateRecall` component
+
+0.54.3
+-------------------------------------------------------
+* Adds navigating back to the Dashboard -> Explore route, on Cancel / after Save
+
+0.54.2
+-------------------------------------------------------
+* Adds `RecallsStore.toggleSelected()`, for selecting multiple recalls
+* Adds `dehydrate` to Recalls and User stores, for rehydrating server-side store data
+
+0.54.1
+-------------------------------------------------------
+* Merges !136 - fix #146 (@ino.pavel)
+* Adds `token` cookie after auth, so future web server requests can re-use the same token for server-side rendering
+* Fixes date picker `addDeadline` function in #146
+
+* Add NPM:
+"js-cookie": "^2.1.3",
+
+0.54.0
+-------------------------------------------------------
+* Adds `UserStore.whenUser()`, for resolving a promise when a user has logged in
+* Adds `UserStore.authWrapper()`, for common auth logic for token/credentials login
+* Adds `UserStore.runWhenUser` isomorphic wrapper, for running functions on the server + client logged for logged in users
+* Adds server-side user login + rendering, when a valid token cookie is passed
+
+* Adds NPM:
+"cookie-parser": "^1.4.3",
+
+0.53.1
+-------------------------------------------------------
+* Fixes 'source' logic introduced in #143
+
+0.53.0
+-------------------------------------------------------
+* Updates recall stores to work with API 0.14.0
+
+0.52.2
+-------------------------------------------------------
+* Fixes redial triggers on initial page load
+* Adds client-only `listen()` invocation during store init
+* Adds `UserStore.whenLogin()`, to await on a logged in user
+* Adds 'login' event emission when a user has logged in
+* Adds `RecallStore.loadInitial()` to populate local recalls from the API
+* Improves `RecallsStore` data storage, to only load instance when needed
+
+0.52.1
+-------------------------------------------------------
+* Fixes static Storybook running
+* Removes `ctx` from redial triggers
+* Improves `RecallStore`
+* Improves `RecallsStore` to instantiate `RecallStore` per recall
+* Adds `RecallStore.listen()` function, to listen to added recalls
+* Refactors `RecallItem` and `RecallItems` to use stores instead of functions
+* Improves deadline handling on newly created recalls
+
+* Adds NPM:
+"lodash.omit": "^4.5.0"
+
+0.52.0
+-------------------------------------------------------
+* Adds live connectivity via Sockets/REST to Feathers-based API endpoint
+* Adds token authentication on initial load
+* Adds 'local' strategy for user/pass-based authentication via login
+* Adds `dashboard/recall` store, for editing a new recall
+* Adds `dashboard/recalls` store, for handling multiple recalls
+* Adds `user` store, for handling authentication and user data
+* Refactors server entry to use Express 4.x instead of Koa, to match our API environment
+* Adds global 'API_URL' var, to dynamically point to local/staging/production APIs
+* Adds `.storybook/head.html`, for loading external script tags into Storybook
+* Adds Feathers client to store instantiation
+* Adds per-request Feathers client to server-side rendering
+* Removes embedded settings variables (now provided via NPM config)
+* Adds /api proxy to webpack, for dynamically routing dev-server requests to live API
+* Improves form store `check()` function, to wrap an async function and catch errors
+* Refactors `login` store, to authenticate via Feathers
+* Refactors `register` store, to sign-up via Primus websocket
+* Removes `session` store, in favour of pure JWT tokens and Feathers auth
+* Refactors /dashboard handlers to use new `User`, `Recall` and `Recalls` stores
+* Removes Apollo
+* Fixes layout container `props.children` handling
+* Adds `.isError` temporary border style to 'create recall' field errors
+* Starts work on `explore` refactor, to work with the new API
+* Merges !111 - Added changes for container with button (@ino.anastasya)
+* Merges !112 - close #22 (@ino.pavel)
+* Merges !113 - Feature/123 (@ino.pavel)
+* Merges !114 - Feature/120 (@ino.pavel)
+* Merges !115 - Issues/frola (@ino.alex)
+* Merges !116 - Make like docs #133 (@ino.pavel)
+* Merges !118 - Fixed (@ino.anastasya)
+* Merges !119 - back style #145 (@ino.pavel)
+* Merges !120 - fixed left panel paddings (@ino.alexey)
+* Merges !121 - Issues/139 (@ino.alexey)
+* Merges !122 - Feature/144 (@ino.pavel)
+* Merges !123 - Fixed position for Froala (@ino.alexey)
+* Merges !124 - Fixed (@ino.anastasya)
+* Merges !125 - closes #112 (@ino.pavel)
+* Merges !126 - merge conflict (@ino.pavel)
+
+* Removes folders/contents:
+- src/handlers/app
+- src/queries
+- src/shared/api
+
+* Adds NPM:
+"express": "^4.14.0",
+"feathers": "^2.0.2",
+"feathers-authentication": "^0.7.12",
+"feathers-hooks": "^1.6.1",
+"feathers-primus": "^1.4.1",
+"feathers-socketio": "^1.4.2",
+"primus.io": "^4.0.0",
+
+* Cleans up redundent NPM for file size and build improvements:
+"apollo-client": "^0.5.0",
+"babel-preset-node6": "^11.0.0",
+"babel-relay-plugin": "^0.9.3",
+"formsy-react": "^0.18.1",
+"isomorphic-fetch": "^2.2.1",
+"isomorphic-relay": "^0.7.3",
+"isomorphic-relay-router": "^0.8.4",
+"js-cookie": "^2.1.3",
+"koa": "^2.0.0",
+"koa-body": "^2.0.0",
+"koa-convert": "^1.2.0",
+"koa-cors": "0.0.16",
+"koa-router": "^7.0.1",
+"koa-static": "^3.0.0",
+"parse-domain": "^1.0.0",
+"request-promise-native": "^1.0.3",
+"graphql-tag": "^0.1.15",
+
+0.51.0
+-------------------------------------------------------
+* Merges !104 - fixes #114 (@ino.pavel)
+* Merges !105 - Resolve "Dashboard -> Explore: Design for no recalls" (@ino.anastasya)
+* Merges !106 - Resolve "Register: After registration?" (@ino.anastasya)
+* Merges !107 - close #104 (@ino.pavel)
+* Merges !108 - Issues/create recall scroll (@ino.alex)
+* Merges !109 - Fixed last recall behaviour (@ino.anastasya)
+* Merges !110 - Recalls Due alert (@ino.alex)
+* Fixes 'No recalls' centring on smaller screens
+* Fixes typo on 'No recalls' screen
+
+0.50.4
+-------------------------------------------------------
+* Merges !103 - fixes #115 (@ino.pavel)
+
+0.50.3
+-------------------------------------------------------
+* Fixes missing FROALA_KEY error in webpack
+* Adds `handlers/dashboard/layout/containers/plain.js`, for handling main content area in dashboard
+* Adds `handlers/dashboard/layout/containers/withButtons.js`, for handling content areas with buttons
+* Updates live 'Create Recall' handler to have a container, and active save/cancel buttons
+* Adds container wrapper for 'explore' area in dashboard
+
+0.50.2
+-------------------------------------------------------
+* Merges !102 - Issues/91 (@ino.alex)
+
+0.50.1
+-------------------------------------------------------
+* Adds `react-dropzone` (missing after merge resolution)
+
+0.50.0
+-------------------------------------------------------
+* Adds FROALA_KEY to build process, to specify correct Froala Editor key for target URL
+* Merges !100 - Issues/110 (@ino.alex)
+* Merges !101 - fileStack (@ino.pavel)
+* Fixes jsx-a11y linting in Docs `Upload` component
+
+0.49.1
+-------------------------------------------------------
+* More ESlint fixes
+
+0.49.0
+-------------------------------------------------------
+* Updates webpack config to use (now mandatory) `-loader` syntax
+* Bumps Node to 7.1.0 in Docker
+* Temporarily disables full-screen mode for `react-dates` (`Calendar` component), pending https://github.com/airbnb/react-dates/issues/181
+
+* Bumps NPM:
+- "jquery": "^3.1.1"
+- "moment": "^2.16.0"
+- "react": "^15.4.0",
+- "react-addons-shallow-compare": "^15.4.0",
+- "react-dates": "^4.0.2",
+- "react-dom": "^15.4.0",
+- "react-router-scroll": "^0.4.1"
+- "babel-preset-node7": "^1.4.0"
+- "css-loader": "^0.26.0"
+- "eslint-plugin-jsx-a11y": "^3.0.1"
+- "postcss-import": "8.2.0"
+- "webpack-merge": "^0.17.0"
+
+0.48.4
+-------------------------------------------------------
+* Merges !93 - added styling for froala editor (@andrewg)
+* Merges !94 - closes #105 (@ino.pavel)
+* Merges !95 - Resolve "Kill Medium Draft" (@andrewg)
+* Merges !96 - keeping style changes to froala to be within froala only (@andrewg)
+* Merges !97 - Issues/101 (@ino.alexey)
+* Merges !98 - fix issues/111 (@ino.alex)
+* Merges !99 - Resolve "Froala editor: Breaks server" (@andrewg)
+
+0.48.3
+-------------------------------------------------------
+* Fixes linting
+* Converts generator functions to plain ES6
+
+0.48.2
+-------------------------------------------------------
+* Fixes eslinting in Atom - Part II. (Will still fail the build due to linting errors, but linting itself should be fixed)
+
+0.48.1
+-------------------------------------------------------
+* Fixes eslinting in Atom (run `npm i` and re-load Atom)
+
+0.48.0
+-------------------------------------------------------
+* Fixes regression with 'Practice' button in Dashboard nav not showing practice stat
+* Merges !83 - added line (@ino.pavel)
+* Merges !84 - vertical scrollbars fix (@ino.pavel)
+* Merges !85 - Buttons for bottom of the screen (@ino.pavel)
+* Merges !86 - layout for errors (@ino.pavel)
+* Merges !87 - common form elements (@ino.pavel)
+* Merges !89 - Feature/practice container (@ino.alex)
+* Merges !90 - closes #25 (@ino.pavel)
+* Merges !91 - fixes #106 (@ino.pavel)
+* Merges !88 - Integrate froala create recall (@andrewg)
+* Merges !92 - Issues/74 (@ino.alex)
+
+0.47.0
+-------------------------------------------------------
+* Merges !76 - Froala editor (@andrewg)
+* Merges !77 - Resolve "Front -> Mobile Menu: Make full row clickable" (@ino.anastasya)
+* Merges !78 - Set default font-family/size for textarea, input, button, select (@ino.alexey)
+* Merges !79 (reverted) - add full height for nav (@ino.pavel)
+* Merges !80 - correct position for desktop and mobile (@ino.pavel)
+* Merges !81 - changed number of visible months to 1 (@andrewg)
+* Merges !82 - Buttons fit to the bottom (@ino.pavel)
+
+0.46.3
+-------------------------------------------------------
+* Updates `package.json` to use staging server endpoints for GraphQL in lieu of localhost
+
+0.46.2
+-------------------------------------------------------
+* Fixes eslinting
+
+0.46.1
+-------------------------------------------------------
+* Adds `recall` GraphQL fragment
+* Adds `createRecall` GraphQL mutation
+* Improves `RecallsStore` to extend `ContextStore` and access the shared Apollo Client & stores
+* Adds `id` to `RecallsStore`
+* Passes context from `RecallsStore` to `Recall` instance
+
+* Adds methods to `CreateRecall`:
+- handleCancel
+- handleSave
+
+0.46.0
+-------------------------------------------------------
+* Adds new `RecallsStore` that returns an observable `Recall` instance
+* Improves `Calendar` component to pass in a plain `Date`
+* Adds `deadline` props to `CreateRecall` for passing in an existing date
+* Merges !74 - Maked full row clickable (@ino.anastasya)
+* Merges !75 - change Dropdown (@ino.pavel)
+
+* Adds handlers:
+- Dashboard
+-- Create recall
+
+* Adds stores:
+- Dashboard
+-- Recalls
+
+0.45.1
+-------------------------------------------------------
+* Moves `views/app` -> `views/dashboard`, to better mimic /dashboard routing
+
+0.45.0
+-------------------------------------------------------
+* Fixes file loading of `views/dashboard/practice/answer`
+* Merges !71 - Feature/94 (@ino.pavel)
+* Merges !73 - Resolve "Practice: Rating" (@ino.anastasya)
+* Moves Storybook 'App - Recalls -> Rating Component' to 'App - Practice -> Rating'
+
+* Moves `Practice -> Rating` component:
+- `views/dashboard/recalls/ratingView.js` -> `views/dashboard/practice/rating/index.js`
+- `views/dashboard/recalls/label.js` -> `views/dashboard/practice/rating/label.js`
+- `views/dashboard/recalls/label.css` -> `views/dashboard/practice/rating/label.css`
+
+* Adds `SERVER` check to `views/dashboard/recalls/label.js` to avoid `navigator.userAgent` error on server
+
+* Adds stories:
+- App - Practice
+-- Answer
+-- Rating
+
+0.44.0
+-------------------------------------------------------
+* Merges !69 - answer component (@ino.pavel)
+* Merges !70 - Issues/82 (@ino.alex)
+* Temporarily disables `stories/answer` component until `views/dashboard/answer/answer` is resolvable in !71
+
+0.43.0
+-------------------------------------------------------
+* Moves `views/recalls/recalls-manager` to `views/recalls/explore`;
+* Moves `views/recalls/create` to `views/recalls/create/main`
+* Moves `views/recalls/recalls-manager-create` to `views/recalls/create/index`
+* Adds /dashboard links in `config/links`
+* Adds /dashboard/create route
+* Adds working route navigation to dashboard nav
+* Removes "App Layout -> Container" story ("App - Recalls -> Edit" is the same)
+* Removes `Recalls Manager (Create)` story (now "App - Recalls -> Create")
+* Removes `Recalls Manager (Edit)` story (now "App - Recalls -> Edit")
+
+0.42.1
+-------------------------------------------------------
+* Temporarily removes `source` prop and mark-up on Recalls -> Create component, until `Docs` area is complete
+
+0.42.0
+-------------------------------------------------------
+* Renames `token` cookie to `idr_token`, to avoid conflict with Rancher
+
+0.41.2
+-------------------------------------------------------
+* Improves `RegisterHandler` to automatically login after creating a new account
+
+0.41.1
+-------------------------------------------------------
+* Fixes React warning in Storybook referencing lack of `key` attribute in App - Search -> Order Controls
+
+0.41.0
+-------------------------------------------------------
+* Merges !68 - Feature/81 (@ino.pavel)
+* Improves Practice Mode -> Header / Progress Bar, per 81#note_1009
+
+0.40.0
+-------------------------------------------------------
+* Adds request context to `fetch` on the server-side to allow manipulation of the response object
+* Adds /dashboard route handler
+* Adds /dashboard index handler ('Explore' placeholder)
+* Adds server-side authentication to /dashboard routes, and redirects to login via a 302 response
+* Adds logout mutation GQL
+* Adds `SessionStore.logout()` mutation
+* Adds `email` to `session` fragment GQL
+* `LoginStore.login` now returns true/false to allow composition of follow-up methods
+* Adds `SessionStore.getHashedEmail` for returning MD5 e-mails for Gravatar profiles
+* Adds linking between Register and Login stories
+* Adds first name personalisation to 'Your Account' in the dashboard
+* Renames `register` to `createUser` in the `Register` component
+* Adds 'Logout' link to `TopMenu` and `MobileMenu` components
+* Adds working 'Sign Out' to dashboard
+
+* Adds handlers:
+- Dashboard
+-- Container (Index)
+-- Explore (IndexRoute)
+-- Header
+-- Nav
+
+- Front
+-- Login
+-- Register
+-- Layout
+--- Top Menu
+
+* Adds queries:
+- Mutations
+-- createUser
+-- logout
+
+* Adds stores:
+- Front
+-- Register
+
+* Adds stories:
+- Front - Users
+-- Register (live)
+
+0.39.0
+-------------------------------------------------------
+* Adds /register route
+* Adds user creation handling
+* Improves `Register` component
+
+* Adds stores:
+-- front/register
+
+* Adds stories:
+- Front - Users
+-- Register (Mock)
+-- Register (Live)
+
+* Adds queries:
+- mutations
+-- createUser
+
+* Drops NPM:
+- "@kadira/storybook-addon-knobs": "^1.4.1"
+
+0.38.3
+-------------------------------------------------------
+* Improves build process
+* Adds front navigation links for logged out/in states
+
+0.38.2
+-------------------------------------------------------
+* Adds `GRAPHQL` env var in Webpack, for dynamic GraphQL URLs
+* Adds Storybook `DefinePlugin` definition of `GRAPHQL`
+* Adds local CORS config for web server
+* Removes webpack proxy (no longer needed due to `GRAPHQL` env var)
+
+* Adds NPM:
+- "koa-convert": "^1.2.0
+- "koa-cors": "0.0.16"
+
+0.38.1
+-------------------------------------------------------
+* Fixes linting
+
+0.38.0
+-------------------------------------------------------
+* Temporarily re-enables `npm` until https://github.com/yarnpkg/yarn/issues/786 is fixed
+* Removes redundant manual GraphQL transpilation step (now happens automatically)
+* Fixes `session` store
+* Adds working/live login method to `login` store
+* Fixes Apollo Client initiation for 0.5x branch
+* Adds `shared/helpers` for universal helper functions
+* Adds `toDotKeys` function to translate nested objects into flat dot-notation string keys
+* Adds extendable `ContextStore`, to make Apollo + all stores accessible to the current request
+* `FormStore` now extends `ContextStore`, for deeper inheritance of store roles
+* Adds `FormStore.hasChanged` property, to detect whether a form has changed
+* Adds `FormStore.check` method, for handling returned errors on GraphQL mutations
+* Removes unnecessary refetch on `LoginStore.login` mutation -- session is now automatic
+* Adds `LoginStore` to store context loader
+* Adds `MenuStore` to store context loader
+* Moves `src/stores/menu.js` -> `src/stores/front/menu.js`
+* Adds `SessionStore.id`
+* Adds `SessionStore.firstName`
+* Adds `SessionStore.lastName`
+* Adds `SessionStore.email`
+* Adds `SessionStore.isLoggedIn`
+* Improves `SessionStore` watcher subcription and result handling
+* Adds "Is logged in?" and User data to Stories -> Experiments -> Session
+* Fixes Stories -> Front - Users -> Login (live) to use the staging API server
+* Adds implicit session initialisation to Storybook loader
+* Adds '/graphql' proxy, to send requests on to the real API back-end
+* Adds web server cookie handing --  the API server now exclusively uses JWT tokens
+* Adds `/graphql` -> web server proxy in `npm run dev` (webpack dev server)
+* Removes redundant `npm run schema` build step
+* Adds `GRAPHQL` env var to `npm run dev`, to point to the local GraphQL proxy
+* Adds `npm run build-server`, to build just the production web server
+* Adds `npm run server`, which both builds and runs the production web server
+
+* Adds GraphQL queries:
+- fragments
+-- errors
+-- sessions
+- mutations
+-- login
+- getSession
+
+* Adds NPM:
+- "koa-body": "^2.0.0"
+- "parse-domain": "^1.0.0"
+- "request-promise-native": "^1.0.3"
+
+0.37.4
+-------------------------------------------------------
+* Fixes linting caused by redundant `action` in `stores/session`
+
+0.37.3
+-------------------------------------------------------
+* Adds `destroySession` mutation and associated .gql
+* Adds named `getSession` query
+* Modifies session behavior to automatically refetch queries
+* Adds `isomorphic-fetch` to the web server for Apollo client usage
+* Refactors `apollo.getClient()` to use cookies on the client-side
+* Removes Relay instantiation
+* Removes redundant `swipeout.css.json` script causing Storybook bump to fail
+
+* Bumps NPM:
+ apollo-client        ^0.4.22  →   ^0.5.0
+ react-router          ^2.8.1  →   ^3.0.0
+ copy-webpack-plugin   ^3.0.1  →   ^4.0.0
+ webpack-merge        ^0.14.1  →  ^0.15.0
+ mobx                            ^2.6.0  →   ^2.6.1
+ mobx-utils                      ^1.1.0  →   ^1.1.2
+ moment                         ^2.15.1  →  ^2.15.2
+ react-dates                     ^3.3.2  →   ^3.5.0
+ react-gravatar                  ^2.5.2  →   ^2.6.1
+ react-router-scroll             ^0.3.2  →   ^0.3.3
+ @kadira/storybook              ^2.24.0  →  ^2.29.0
+ @kadira/storybook-addon-knobs   ^1.3.3  →   ^1.4.1
+ babel-core                     ^6.17.0  →  ^6.18.2
+ babel-eslint                    ^7.0.0  →   ^7.1.0
+ babel-loader                    ^6.2.5  →   ^6.2.7
+ babel-preset-es2015            ^6.16.0  →  ^6.18.0
+ eslint                          ^3.8.0  →   ^3.9.1
+ eslint-plugin-react             ^6.4.1  →   ^6.5.0
+ postcss-loader                  ^1.0.0  →   ^1.1.0
+ postcss-partial-import          ^2.0.0  →   ^2.1.0
+ webpack-config                  ^6.1.3  →   ^6.2.1
+
+0.37.2
+-------------------------------------------------------
+* Fixes Storybook building to allow `SERVER` constant in code
+
+0.37.1
+-------------------------------------------------------
+* Removes console log showing Webpack plugins after starting Storybook
+* Adds interim `env.isTouchDevice` detection (WIP)
+
+0.37.0
+-------------------------------------------------------
+* Adds `SERVER` constant (true|false) via Webpack- Stories and proper
+* Bumps node version to 7 in Dockerfile and Dockerfile-eslint
+* Removes redundant Relay transpilation step
+* Adds session instantiation to Front -> Index loader
+* Adds server-side Apollo client instantiation
+* Improves Apollo request handling to use cookies instead of localStorage
+* Adds `shared/env` fixture for environment detection features
+* Fixes regression in Stories -> Experiments -> Session where session ID would refresh forever
+* Merges !56 - Issue/73 (@ino.alexey)
+* Merges !57 - Create recall storybook (@leebenson)
+* Merges !58 - refactored CreateRecall component and created Calendar component (@andrewg)
+* Merges !59 - Rich text editor (@andrewg)
+* Merges !60 - added ol, ul and highlight (@andrewg)
+* Merges !61 - update medium-draft (@andrewg)
+* Merges !62 - Issues/73 (@ino.alex)
+* Merges !63 - Refactoring items (@ino.alex)
+* Merges !64 - Issues/77 (@ino.alex)
+* Merges !65 - hide tooltip editor on mobile (@andrewg)
+
+* Adds NPM:
+"isomorphic-fetch": "^2.2.1"
+
+* Adds stories:
+- Experiments
+-- Environment
+
+0.36.0
+-------------------------------------------------------
+* Adds scoped `getClient()` singleton to shared Apollo client loader
+* Adds dynamic `getServer()` for a new Apollo client per-request (WIP)
+* Adds explicit `dehydrate` for controlling store observables sent down the wire
+* Consolidates session stories
+
+0.35.0
+-------------------------------------------------------
+* Adds session GraphQL queries and fragment .gql files
+* Adds `WatchedStore`, for listening to arbitrary GraphQL queries
+* Adds `SessionStore`, for responding to login and handling users
+
+* Adds stories:
+- Experiments
+-- Sessions Mock (GraphQL)
+-- Sessions Live (GraphQL)
+
+* Adds NPM:
+- "mobx-utils": "^1.1.0"
+
+0.34.0
+-------------------------------------------------------
+* Adds `shared/apollo` instantiation for Apollo Client
+* Adds client-side Apollo Client network layer
+* Adds JWT bearer token handshake on request/response to the live API server
+* Adds .gql GraphQL parsing to Webpack (main and Storybook)
+
+* Adds stories:
+- Experiments
+-- Sessions (GraphQL)
+
+* Adds NPM:
+- "apollo-client": "^0.4.22"
+- "graphql-tag": "^0.1.15"
+
+0.33.1
+-------------------------------------------------------
+* Fixes path on App -> Recalls -> Create that prevented Storybook from building
+
+0.33.0
+-------------------------------------------------------
+* Adds proof-of-concept for `react-dates` to App -> Recalls -> Create
+
+0.32.0
+-------------------------------------------------------
+* Merges !53 - Issues/76 (app container) (@ino.alex)
+* Merges !54 - Update readme (@ino.alex)
+* Merges !55 - Issues/71 app container (@leebenson)
+* Fixes Search Bar highlighting per [this comment](https://git.leebenson.com/idr/front/merge_requests/53#note_837)
+* Adds .s(c|a)ss SASS loader to Storybook
+
+0.31.1
+-------------------------------------------------------
+* Adds explicit logging for the App -> Profile story
+* Adds `hasChanged` computed method to Form store
+* Improves Form store construct to accept strings of objects of default values
+* Adds `defaults` map to Form store to test against previous defaults
+
+* Updates `.propTypes` for the following components, to use verb handlers:
+- App -> Header
+- App -> Nav
+- App -> Profile
+
+0.31.0
+-------------------------------------------------------
+* Merges !52 - Issues/72 (search bar) (@ino.alex)
+* Fixes ESLint code path
+* Fixes linting issues with search bar in stories and components
+* Fixes `magnify` function handling in App -> Search Bar component
+* Fixes search bar `.propTypes`
+* Fixes redundant calls to `search/index` (replaced with `search`)
+
+0.30.0
+-------------------------------------------------------
+* Adds components:
+- Front -> Register -> Index
+- Front -> Register -> Form
+
+* Add stories:
+- Front - Users
+-- Register (mock)
+
+0.29.1
+-------------------------------------------------------
+* Fixes Front -> Login -> "Need an account?" link
+* Fixes styling for Front -> Login -> "Need an account?" link
+* Adds generic `link` function to handler Front -> Login
+* Fixes `.propTypes` for `TopMenu` and `MobileMenu` components
+
+0.29.0
+-------------------------------------------------------
+* Fixes broken Webpack source maps in .js files
+* Removes /playground from routes
+* Adds /forgotPassword link
+
+* Stores
+- Adds `forms` store
+- Adds `login` store (extends `forms` with a `login` function)
+- Adds `menu` store
+- Removes surplus store initiation on server routes
+
+* Adds components:
+- Accessible Link that takes an `onClick` handler
+- Front -> Home -> Crush
+- Front -> Home -> Hero
+- Front -> Login -> Index
+- Front -> Login -> Form
+
+* Refactors:
+- Front -> Layout -> Top Menu
+- Front -> Layout -> Mobile Menu
+- Front -> Login -> Index
+- Front -> Login -> Form
+- Common -> Input
+- Common -> Divider
+- Common -> Forms
+
+* Adds handlers:
+- Front -> Container handler (index)
+- Front -> Home -> Crush
+- Front -> Home -> Hero
+- Front -> Layout -> Top Menu
+- Front -> Layout -> Mobile Menu
+- Front -> Login
+
+* Adds stories:
+- Front -> Users -> Login -> Live
+- Front -> Users -> Login -> Mock
+
+0.28.0
+-------------------------------------------------------
+* Merges !51 - TagBar component refactored (@andrewg)
+
+0.27.0
+-------------------------------------------------------
+* Re-writes Storybook webpack for 'full control' configuration mode
+* Adds `babel-polyfill` to Storybook to mimic production transpilation
+* Refactors Search store to use succinct functions
+* Fixes Search -> Order component in production
+
+0.26.1
+-------------------------------------------------------
+* Fixes Storybook build
+
+0.26.0
+-------------------------------------------------------
+* Refactors App -> Search -> Order controls
+* Moves 'views/dashboard/components/search.*' to 'views/dashboard/search/*'
+* Moves `views/dashboard/components/button-bar.*`, to 'views/dashboard/layout/nav.*'
+* Moves 'views/dashboard/components/header.*' to 'views/dashboard/layout/header.*'
+* Moves 'views/dashboard/components/profile.*' to 'views/dashboard/profile/profile.*'
+* Moves 'views/dashboard/components/profile-container.*' to  'views/dashboard/profile/index.*'
+
+* Adds Storybook components:
+-- App - Layout
+- Profile
+-- App - Search
+- Ordering
+
+0.25.1
+-------------------------------------------------------
+* Adds reset button to Rating component to demo controls within storybook
+* Adds explicit Docker image removal to build step, to aid clean-up
+
+0.25.0
+-------------------------------------------------------
+* Adds Storybook components:
+- App - Recalls
+-- Rating
+
+* Bumps NPM:
+- "eslint-config-airbnb-base": "^9.0.0",
+
+0.24.2
+-------------------------------------------------------
+* Fixes static Storybook server load path
+
+0.24.1
+-------------------------------------------------------
+* Adds explicit `fsevents` as an optional dependency, to avoid node hitting 70-100% CPU on OS X
+* Bumps NPM:
+- cross-env       ^3.1.2  →  ^3.1.3
+- react-dates     ^3.3.1  →  ^3.3.2
+- eslint          ^3.7.1  →  ^3.8.0
+- postcss-mixins  ^5.3.0  →  ^5
+
+0.24.0
+-------------------------------------------------------
+* Renames `app` to `src` to work better with tools that rely on naming conventions
+
+0.23.0
+-------------------------------------------------------
+* Removes unused `https` prop on `Gravatar` component
+* Adds ESLint JSX rule to align closing bracket with final prop
+* Fixes linting to comply with new rule
+
+* Adds Storybook components:
+- App - Layout
+-- Button Bar
+
+0.22.3
+-------------------------------------------------------
+* Fixes parsing error in `apps/views/playground.js` preventing linting
+
+0.22.2
+-------------------------------------------------------
+* Merges !46 - Issues/26 (@ino.alex)
+* Fixes merge issues on .scss -> .css files
+
+0.22.1
+-------------------------------------------------------
+* Adds Storybook instructions to `README.md`
+* Merges !48 - fixed the camera falling off the screen for iPhone SE (@andrewg)
+
+0.22.0
+-------------------------------------------------------
+* Removes the need to instantiate non-Relay components via Relay
+
+* Adds Storybook components:
+- App Controls
+-- Toggle switch
+
+- Front - Home
+-- Hero
+-- Benefits
+-- Bibliography
+-- Crush
+-- Organized
+-- Remember
+
+0.21.0
+-------------------------------------------------------
+* Adds React Storybook component testing
+* Adds custom Storybook webpack configuration
+
+* Adds stories:
+- App layout
+-- header
+- Icons
+
+* Bumps `Dockerfile-eslint` to node 6.8.0
+* Refactors `app/header` component to be stateless
+* Refactors `app/search-bar` component to be stateless
+* Adds `app/header` MobX production handler
+* Adds Storybook build step to `Dockerfile`
+* Adds static Storybook path to `paths.js`
+* Adds React and async support to local Babel configuration
+
+0.20.0
+-------------------------------------------------------
+* Moves build workflow from npm -> yarn
+* Drops NPM:
+"babel-preset-node5": "^11.1.0",
+
+0.19.0
+-------------------------------------------------------
+* Merges !41 - Issues/5 (@ino.alex)
+* Merges !42 - added CreateRecall component to RecallCreateContainer (@andrewg)
+* Merges !43 - Fix for #63 ... (@ino.alex)
+* Merges !44 - Fix for #68. Edit recall: Button issue in Safari (@ino.alex)
+* Merges !45 - latest react tags component fixes focus issue (@andrewg)
+* Merges !47 - Postcss (@leebenson)
+
+0.18.3
+-------------------------------------------------------
+* Fixes Chrome Devtools performance issues by flattening SASS loading
+* Fixes #38 by removing autoprefixer config (need to investigate impact on older browsers)
+* Changes sourcemap strategy to attempt Devtools speed-up
+
+0.18.2
+-------------------------------------------------------
+* Fixes 'create recall' store state to init `deadline` as a `moment` object
+* Merges !38 - Create recall container (@sahat)
+* Merges !39 - Update to "Create recall (UI): Tracker" (@andrewg)
+* Merges !40 - Sign up/login: Background stretch + footer (@ino.alex)
+
+0.18.1
+-------------------------------------------------------
+* Merges !37 - Front layout: Fix on 4k / larger screens
+
+0.18.0
+-------------------------------------------------------
+* Merges !35 - Add windows support (@sahat)
+* Merges !36 - Built docs search bar component, and refactored recalls search bar for it (@andrewg)
+* Fixes linting issues in !36
+* Adds temporary patch for #62 (needs fixing)
+
+0.17.0
+-------------------------------------------------------
+* Merges !34 - Issue/quill compile
+* Fixes numerous Webpack 2 bugs, and enables working tree-shaking for ES6 modules
+* Adds `node_modules` ES6 builds to the client-side production build step
+* Replaces @autobind with implicitly bound class methods
+* Removes NPM:
+- "core-decorators": "^0.12.3",
+- "delay": "^1.3.1",
+- "immutable": "^3.8.1"
+- "merge": "^1.2.0"
+- "react-draggable": "^2.2.2"
+- "react-swipe-to-reveal-options": "^0.3.6"
+- "react-toggle": "^2.1.1"
+- "babel-plugin-transform-class-properties": "^6.16.0"
+- "browser-request": "^0.3.3"
+
+0.16.0
+-------------------------------------------------------
+* Fixes ESLint warnings (ironically, will likely now fail this commit)
+
+0.15.1
+-------------------------------------------------------
+* Removes tree shaking test from `client.js` entry
+
+0.15.0
+-------------------------------------------------------
+* Improves Webpack 2 configuration
+* Added Quill as the editor library @ ^1.0.3
+* Merges !31 - IE11 layout fixes (@sahat)
+* Merges !32 - IE11 Swipeout fixes (@sahat)
+
+0.14.2
+-------------------------------------------------------
+* Fixes uglifyJS over-optimisation that caused an error in `server.js`
+
+0.14.1
+-------------------------------------------------------
+* Fixes `client.js` regression introduced in 0.14.0
+
+0.14.0
+-------------------------------------------------------
+* Upgrades Webpack to v2, introducing tree-shaking & slimmer builds
+* Fixes hot-reload with Relay components (full page refresh workaround)
+* Bumps NPM packages:
+babel-eslint           ^6.1.2  →  ^7.0.0
+eslint-plugin-import  ^1.16.0  →  ^2.0.0
+filepicker-js                              ^2.4.17  →  ^2.4.18
+isomorphic-relay-router                     ^0.8.3  →   ^0.8.4
+mobx                                        ^2.5.1  →   ^2.5.2
+mobx-react                                  ^3.5.6  →   ^3.5.7
+react-gravatar                              ^2.5.0  →   ^2.5.2
+autoprefixer                                ^6.4.1  →   ^6.5.0
+babel-core                                 ^6.14.0  →  ^6.17.0
+babel-plugin-transform-async-to-generator   ^6.8.0  →  ^6.16.0
+babel-plugin-transform-class-properties    ^6.11.5  →  ^6.16.0
+babel-polyfill                             ^6.13.0  →  ^6.16.0
+babel-preset-es2015                        ^6.14.0  →  ^6.16.0
+babel-preset-react                         ^6.11.1  →  ^6.16.0
+babel-preset-stage-0                        ^6.5.0  →  ^6.16.0
+babel-preset-stage-1                       ^6.13.0  →  ^6.16.0
+eslint                                      ^3.6.0  →   ^3.7.0
+node-sass                                  ^3.10.0  →  ^3.10.1
+
+v0.13.2
+-------------------------------------------------------
+* Bumps Node to 6.7
+* Merges !30 - Fixes recall item red border when resizing window (@sahat)
+* Fixes #39
+* Adds ESlinting Dockerfile improvements
+
+v0.13.1
+-------------------------------------------------------
+* Adds `test` eslinting step to Gitlab
+* Adds scripts/eslint.sh entry and Dockerfile-eslint lint checking
+* Drops X-* headers per RFC 6648
+* Fixes 300ms delay on iOS after double-tap zoom
+
+v0.13.0
+-------------------------------------------------------
+* Refactors full front-end to pass ESLint tests
+
+* Bumps NPM packages:
+redial                 ^0.4.2  →         ^0.5.0
+css-loader            ^0.23.1  →        ^0.25.0
+eslint-config-airbnb  ^10.0.1  →        ^12.0.0
+postcss-loader        ^0.10.1  →        ^0.13.0
+react-hot-loader       ^1.3.0  →  ^3.0.0-beta.5
+bluebird                        ^3.4.1  →   ^3.4.6
+md5                             ^2.1.0  →   ^2.2.1
+mobx                            ^2.4.3  →   ^2.5.1
+mobx-react                      ^3.5.5  →   ^3.5.6
+moment                         ^2.15.0  →  ^2.15.1
+react                          ^15.3.1  →  ^15.3.2
+react-dom                      ^15.3.1  →  ^15.3.2
+react-draggable                 ^2.2.1  →   ^2.2.2
+react-gravatar                  ^2.4.5  →   ^2.5.0
+react-router                    ^2.7.0  →   ^2.8.1
+react-swipe-to-reveal-options   ^0.3.5  →   ^0.3.6
+react-tag-autocomplete          ^5.0.0  →   ^5.0.3
+autoprefixer                    ^6.4.0  →   ^6.4.1
+babel-core                     ^6.13.2  →  ^6.14.0
+babel-preset-es2015            ^6.13.2  →  ^6.14.0
+eslint                          ^3.3.1  →   ^3.6.0
+eslint-plugin-import           ^1.14.0  →  ^1.16.0
+eslint-plugin-jsx-a11y          ^2.1.0  →   ^2.2.2
+eslint-plugin-react             ^6.1.2  →   ^6.3.0
+
+* Merges !27 - replaced eye icon with fontawesome svg equivalent (@andrewg)
+* Merges !28 - Split app container into recalls and docs page components (@sahat)
+* Merges !29 - Sing out dropdown menu (@sahat)
+
+v0.12.0
+-------------------------------------------------------
+* Merges !25 - Fix App layout/search tracker (@sahat)
+* Merges !26 - Created sign up page (@andrewg)
+* Fixes link on 'Get Started' on the home page
+
+v0.11.1
+-------------------------------------------------------
+* Merges !23 - prevent empty strings being added as tags (@andrewg)
+
+v0.11.0
+-------------------------------------------------------
+* Improves layout of `shared/api` functionality, to avoid unnecessary NPM loading in browsers
+* Removes NPM:
+- "cookies-js": "^1.2.2"
+* Adds NPM:
+- "js-cookie": "^2.1.3"
+* Removes auto-focus on playground input components, ensuring a 0,0 scroll position
+* Bumps `Dockerfile` node version to 6.6
+* Merges !24 - various updates made for Lev (@andrewg)
+
+v0.10.2
+-------------------------------------------------------
+* Adds live GraphQL endpoint for Relay
+
+v0.10.1
+-------------------------------------------------------
+* Adds NPM:
+- "moment": "^2.15.0"
+
+v0.10.0
+-------------------------------------------------------
+* Adds `ClientNetwork` and `ServerNetwork` Relay API network layers for universal API handling
+* Adds server-side proxy of client requests to pre-render Relay data for SEO/fast initial loading
+* Bumps Babel server polyfill to `node6`
+* Adds NPM:
+- "cookies-js": "^1.2.2"
+
+v0.9.0
+-------------------------------------------------------
+* Adds first Relay component to playground that retrieves API data isomorphically
+* Adds custom Relay Babel plug-in
+* Updates webpack config to use environment-aware Relay plug-in for dev & production
+* Adds `npm run schema` for generating live `graphql.json` Relay configuration
+* Adds `SessionQueries` Relay router config
+* Adds temporary `settings.js` in lieu of environment variables for dev fixtures
+
+v0.8.2
+-------------------------------------------------------
+* Merges !19 - make search results appear above components (@andrewg)
+* Merges !20 - adding margin to vertically center magnifying glass (@andrewg)
+* Merges !21 - improved variable name (@andrewg)
+* Adds early Relay Babel plug-in
+
+v0.8.1
+-------------------------------------------------------
+* Merges !18 - Add search-bar to the layout component (@sahat)
+
+v0.8.0
+-------------------------------------------------------
+* Merges !17 - adds login page (@andrewg)
+* Adds single-page transitions between menu item links
+
+v0.7.0
+-------------------------------------------------------
+* Adds groundwork for Relay
+* Updates `shared/api.js` to point to API staging server with a Relay network layer
+* Enables server-side / isomorphic handling of Relay store state alongside Mobx
+* Adds `window.__RELAY__` for (de)hydrating Relay stores
+* Adds 'playground' link to footer and 'home' to playground, to test linked page transitions
+* Adds client-side bootstrapping of Relay
+* Adds `handleMatch` helper function, for using React Router against both MobX & Relay
+* Fixes implementation of `useScroll` 0,0 scroll positioning with using `useIsoRelay` middleware
+
+* Adds NPM packages:
+- "babel-relay-plugin": "^0.9.3"
+- "isomorphic-relay": "^0.7.3"
+- "isomorphic-relay-router": "^0.8.3"
+- "react-relay": "^0.9.3
+
+v0.6.3
+-------------------------------------------------------
+* Merges !14 - Adds hover effect for menu bar items (@sahat)
+* Merges !15 - Add light grey background for seamless transition between container and items (@sahat)
+
+v0.6.2
+-------------------------------------------------------
+* Adds custom `icons` font library (currently containing just the 'x' bold icon)
+* Adds font anti-aliasing/smoothing CSS
+* Updates `search-bar` to use bold 'x' icon in :after CSS block
+
+v0.6.1
+-------------------------------------------------------
+* Merges !13 search bar fixes (@andrewg)
+
+v0.6.0
+-------------------------------------------------------
+* Merges !11 search bar fixes (@andrewg)
+* Merges !11 App Container (Responsive) (@sahat)
+
+v0.5.0
+-------------------------------------------------------
+* Adds search bar per !10 (@sahat)
+
+v0.4.1
+-------------------------------------------------------
+* Adds Doc / Recall adjustments: Part 2 (!8) (@sahat)
+* Adds Star rating: Slide over action (!9) (@sahat)
+
+v0.4.0
+-------------------------------------------------------
+* Adds Doc/recall item: Microinteraction adjustments (closes #20) (@sahat)
+
+v0.3.0
+-------------------------------------------------------
+* Refactors `doc item` into a generic component (@sahat)
+* Improves `recall item` using a new base Swipeout component (@sahat)
+
+v0.2.1
+-------------------------------------------------------
+
+* Bumps NPM versions:
+
+react-router-scroll                  ^0.2.1   →   ^0.3.2
+filepicker-js                        ^2.4.14  →  ^2.4.17
+mobx                                  ^2.4.1  →   ^2.4.3
+mobx-react                            ^3.5.1  →   ^3.5.5
+react                                ^15.2.1  →  ^15.3.1
+react-dom                            ^15.2.1  →  ^15.3.1
+react-draggable                       ^2.2.0  →   ^2.2.1
+react-router                          ^2.5.2  →   ^2.7.0
+autoprefixer                          ^6.3.7  →   ^6.4.0
+babel-core                           ^6.10.4  →  ^6.13.2
+babel-loader                          ^6.2.4  →   ^6.2.5
+babel-plugin-syntax-async-functions   ^6.8.0  →  ^6.13.0
+babel-polyfill                        ^6.9.1  →  ^6.13.0
+babel-preset-es2015                   ^6.9.0  →  ^6.13.2
+babel-preset-stage-1                  ^6.5.0  →  ^6.13.0
+eslint-plugin-import                 ^1.13.0  →  ^1.14.0
+webpack                              ^1.13.1  →  ^1.13.2
+webpack-dev-server                   ^1.14.1  →  ^1.15.0
+
+* Fixes `react-router-scroll` implementation that broke in upgrade
+* Fixes `postcss` loading in webpack; production builds lacked vendor prefixes
+
+v0.2.0
+-------------------------------------------------------
+* Adds 'doc item' component
+* Removes `.idea` folder and XML build artefacts that are specific to the WebStorm IDE
+* Refactored versioning to reflect pre-MVP development
+
+v0.1.0
+-------------------------------------------------------
+* Adds 'tag bar' component (to playground)
+* Removes 'test' and 'deploy' from Gitlab build steps, to transition over to Rancher deployment
+* Adds tagging to build step; container only builds when an explicit release tag is pushed
+* Updates ESLintrc.js to match .json config
+* Removes redundant Docker Compose config file; proxification is now handled by Rancher
+
+v0.0.1
+-------------------------------------------------------
+- Initial commit
+- Adds updated Docker Compose config that uses nginx proxies

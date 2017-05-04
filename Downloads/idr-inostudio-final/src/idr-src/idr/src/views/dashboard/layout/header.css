@@ -1,0 +1,235 @@
+@import 'styles/init';
+
+:root {
+  --padding: 0.6rem;
+  --height: var(--header-height);
+  --logo-hw-ratio: 1.42222;
+  --full-logo-hw-ratio: 3.58823529411765;
+}
+
+.section {
+  width: 100%;
+  height: var(--height);
+  background-color: var(--dark-grey);
+  padding: var(--padding);
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+
+  /* Disable native selection */
+  user-select: none;
+
+  & > * {
+    height: 2.1333rem;
+  }
+
+  & .logo {
+    flex-shrink: 0;
+    margin-right: 1.2rem;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    /* Abbreviated logo on lower res */
+    background-image: url(assets/images/logo/idr.svg);
+    width: calc((var(--height) - (var(--padding) * 2)) * var(--logo-hw-ratio));
+
+    @mixin M {
+      /* Full logo */
+      background-image: url(assets/images/logo/idorecall-darkbg.svg);
+      width: calc((var(--height) - (var(--padding) * 2)) * var(--full-logo-hw-ratio));
+      margin-right: 1.4666rem;
+    }
+  }
+
+  & nav {
+    flex-grow: 1;
+    color: var(--inactive-link-color);
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+
+    & ul {
+      margin: 0;
+    }
+
+    & ul, & li {
+      display: flex;
+      align-items: center;
+    }
+
+    & li {
+      cursor: pointer;
+      margin-right: 1.2rem;
+      &:first-child{
+        & svg {
+          padding-top: 0.3333rem;
+        }
+      }
+      &:hover, & .active {
+        color: var(--white);
+
+        & svg {
+          fill: var(--white);
+          border-color: var(--white);
+        }
+      }
+
+      &.active {
+        color: var(--white);
+
+        & svg {
+          fill: var(--white);
+          border-color: var(--white);
+        }
+      }
+
+      &:last-of-type {
+        margin-right: 0;
+      }
+
+      & svg {
+        width: 1.3333rem;
+        height: 2rem;
+        fill: var(--inactive-link-color);
+        border-bottom: 0.2rem solid var(--inactive-link-color);
+        padding-bottom: 0.375rem;
+        margin-right: 0.3125rem;
+      }
+
+      & h3 {
+        display: block;
+        align-self: center;
+        text-transform: uppercase;
+        font-size: 1.2rem;
+
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        text-align: left;
+        @mixin M {
+          font-size: 1.3333rem;
+        }
+      }
+
+      /* Give elements a little more space when expanded */
+      @mixin M {
+        & svg {
+          margin-right: 0.625rem;
+        }
+      }
+    }
+  }
+
+  & aside {
+    min-width: calc(var(--height) - (var(--padding) * 2));
+
+    /* Fill the dimensions of an img/svg to fit */
+    & img, & svg {
+      max-width: 100%;
+      height: calc(var(--height) - (var(--padding) * 2));
+    }
+  }
+
+  & .dropdown {
+    position: relative;
+
+    /* When dropdown is active (open) */
+    &.dropdownOpen {
+
+      /* Show dropdown menu */
+      & .dropdownMenu {
+        display: block;
+      }
+
+      /* Highlight "your account" link */
+      & .accountTitle {
+        color: var(--white);
+        border-color: var(--green);
+      }
+
+      /* Highlight caret icon */
+      & svg {
+        fill: var(--green);
+      }
+    }
+  }
+
+  & .dropdownToggle {
+    cursor: pointer;
+
+    & svg {
+      width: 1rem;
+      height: 1rem;
+      fill: var(--inactive-link-color);
+      border: 0;
+      bottom: 0;
+      margin-left: 0.3125rem;
+      margin-right: 0;
+      padding: 0;
+    }
+
+    &:hover {
+      & svg {
+        fill: var(--green);
+      }
+
+      & .accountTitle {
+        border-color: var(--green);
+      }
+    }
+  }
+
+  & .dropdownMenu {
+    /* Initially hidden */
+    display: none;
+
+    position: relative;
+    top: 100%;
+    /* Offset right padding to make it flush with the edge */
+    right: (-var(--padding));
+
+    float: right;
+    min-width: 12.5rem;
+    padding: 0.3125rem 0;
+
+    /* Position menu directly after the header */
+    margin: var(--padding) 0 0;
+
+    background-color: color(var(--green) a(95%));
+    background-clip: padding-box;
+
+    /* Place above other elements */
+    z-index: 1000;
+    left: 8px;
+
+    & div {
+      padding: 0.7rem 1.4rem;
+      color: var(--dark-grey);
+      font-size: 1rem;
+      text-transform: uppercase;
+      cursor: pointer;
+
+      &:hover {
+        background-color: color(var(--white) a(25%));
+      }
+    }
+  }
+
+  & .accountTitle {
+    display: none;
+    align-self: flex-end;
+    margin-right: calc(var(--padding) / 2);
+    padding-bottom: 0.1875rem;
+    border-bottom: 0.1875rem solid var(--inactive-link-color);
+
+    /* Hide account title in mobile view */
+    @mixin M {
+      display: block;
+    }
+  }
+
+  & .accountList {
+    float: right;
+  }
+}

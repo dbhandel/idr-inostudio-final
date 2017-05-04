@@ -1,0 +1,67 @@
+@import 'styles/init';
+
+.section {
+  margin-top: var(--spacing);
+
+  display: flex;
+  flex-direction:column;
+
+  /* Padding on all elements */
+  & > * {
+    padding: var(--spacing);
+    width: 100%;
+  }
+
+  & header {
+    margin-bottom: var(--spacing);
+
+    & h2, & h3 {
+      font-family: "Roboto-Regular";
+      font-size: 1.8rem;
+      max-width: 100%;
+      text-transform: uppercase;
+    }
+
+    & h2 {
+      color: var(--green);
+    }
+
+    & h3 {
+      color: var(--brown);
+    }
+  }
+
+  /* Adapting to var(--tablet) */
+  @media (--tablet) {
+
+    flex-direction: row;
+    justify-content: center;
+
+    & > * {
+      flex-basis: 50%;
+      width: 50%;
+    }
+
+    & article {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+
+      text-align: right;
+
+      & > * {
+        max-width: 25rem;
+      }
+    }
+
+    & figure {
+      overflow: hidden;
+
+      & img {
+        width: 37.5rem;
+        height: 31.75rem;
+      }
+    }
+
+  }
+}

@@ -1,0 +1,64 @@
+@import 'styles/init';
+
+/* Bottom row buttons (cancel, save recall) */
+.container {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  margin: 0 0 var(--left-panel-indent-bottom) 0;
+  z-index: 300;
+
+  @mixin M {
+    &.right-half {
+      margin: 0;
+      width: 50%;
+    }
+    &.left-half {
+      left: 0;
+      width: calc(50% - var(--left-panel-indent-left) / 2);
+    }
+    &.base {
+      margin: 0;
+    }
+    margin: 0 0 0 var(--left-panel-indent-left);
+  }
+
+  & .buttons-wrapper {
+    display: flex;
+    height: var(--button-size);
+  }
+
+  & .title {
+    height: var(--button-description-height);
+    background-color: var(--button-colour);
+    color: var(--white);
+    font-size: 1rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &.title-red {
+      background-color: var(--red);
+    }
+  }
+  & .button {
+    flex: 1;
+    padding: 10px;
+    font-family: "Roboto-Regular";
+    font-size: 1rem;
+    color: var(--green);
+    background-color: var(--dark-grey);
+    border: 0;
+    cursor: pointer;
+    text-transform: uppercase;
+    margin: 0;
+
+    &:not(:first-child) {
+      border-left: 1px solid #95c8b1;
+    }
+  }
+
+  & .button + & .button {
+    border-left: 1px solid var(--green);
+  }
+}

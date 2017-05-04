@@ -1,0 +1,13 @@
+version: '2'
+services:
+  postgres:
+    extends:
+      file: common.yml
+      service: postgres
+  server:
+    extends:
+      file: common.yml
+      service: server
+    links:
+      - postgres
+    command: bash -c "npm run migrate && knex --harmony $MIGRATE"

@@ -1,0 +1,21 @@
+@import 'styles/init';
+
+.gravatar {
+  margin-top: 6rem;
+  height: 8.8rem;
+  width: 8.8rem;
+
+  & > img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+.divider {
+  margin-top: 6rem;
+}
+
+.buttons {
+  margin-top: 6rem;
+  margin-bottom: 1.5rem;
+}

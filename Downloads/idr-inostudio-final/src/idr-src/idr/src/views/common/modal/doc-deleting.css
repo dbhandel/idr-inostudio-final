@@ -1,0 +1,84 @@
+@import 'styles/init';
+
+.modal-overlay{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.modal-wrapper{
+  position: relative;
+}
+
+.modal-content{
+  color: var(--white);
+  position: absolute;
+  top: 40px;
+  left: 0px;
+  right: 0px;
+  bottom: 40px;
+  overflow: auto;
+  WebkitOverflowScrolling: touch;
+  borderRadius: 4px;
+  outline: none;
+  padding-bottom: 10px;
+  background-color: var(--dark-dark);
+  top: 50%;
+  transform: translateY(-50%);
+  margin: auto;
+
+  min-height: 150px;
+  max-width: 450px;
+}
+
+.container{
+  font-family: "Roboto-Regular";
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+
+  & .content{
+    padding: 20px;
+
+    & .main-text{
+      padding-bottom: 20px;
+
+      & .doc-name{
+        font-weight: 800;
+      }
+    }
+
+    & .additional-text{
+      & .recalls{
+        font-size: 1.2rem;
+        font-weight: 800;
+      }
+    }
+  }
+
+  & .buttons{
+    align-self: flex-end;
+    margin-top: auto;
+    width: 100%;
+
+    & button{
+      width: 50%;
+      height: var(--button-size);
+      border: 0;
+      color: white;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+
+    & .confirm{
+      background-color: var(--red);
+    }
+
+    & .cancel{
+      background-color: var(--green);
+    }
+  }
+}

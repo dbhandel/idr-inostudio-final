@@ -1,0 +1,37 @@
+@import 'styles/init';
+
+.button {
+  margin: 1.9rem auto;
+  & button {
+    color: white;
+    border: none;
+    outline: none;
+    padding: 0.65rem 0;
+    margin-top: 0;
+    font-size: 25px;
+    text-transform: uppercase;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+
+    &.danger {
+      background-color: var(--red);
+
+      &:hover {
+        background-color: var(--dark-red);
+      }
+    }
+
+    &.success {
+      background-color: var(--orange);
+
+      &:hover {
+        background-color: var(--dark-orange);
+      }
+    }
+
+    &.disabled{
+      background: #B3B7BA;
+    }
+  }
+}

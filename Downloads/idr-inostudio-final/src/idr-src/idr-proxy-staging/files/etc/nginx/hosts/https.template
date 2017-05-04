@@ -1,0 +1,24 @@
+upstream proxy {
+  server ${UPSTREAM};
+}
+
+server {
+  listen   443 http2 default_server; ## listen for ipv4; this line is default and implied
+  server_name ${DOMAIN};
+  ssl on;
+
+  # surfing this port via plain http? redirect!
+  error_page  497 https://$host$request_uri;
+
+  # caching
+  location ~* \.(?:jpg|jpeg|png|webp|gif|ico|cur|gz|svg|svgz|mp4|ogg|ogv|webm|htc|woff|js|css)$ {
+    expires 1y;
+    access_log off;
+    add_header Cache-Control "public";
+    proxy_pass http://proxy;
+  }
+
+  location / {
+      proxy_pass http://proxy;
+  }
+}

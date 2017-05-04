@@ -1,0 +1,40 @@
+@import 'styles/init';
+
+.wrapper {
+  min-height: 100vh;
+
+  background-image: url(assets/images/photos/hero.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+
+  display: flex;
+  padding-top: 6.5rem;
+  flex-direction: column;
+  align-items: center;
+
+  & .change-page {
+    margin-top: auto;
+    color: var(--green);
+
+    &-links{
+      margin-top: auto;
+      margin-bottom: 0;
+      color: var(--green);
+      text-align: center;
+
+      & div{
+        margin-bottom: 15px;
+      }
+    }
+
+    & *[role="link"] {
+      color: var(--green);
+      text-decoration: none;
+
+      &:hover {
+        color: var(--white);
+      }
+    }
+  }
+}

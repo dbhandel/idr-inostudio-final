@@ -1,0 +1,108 @@
+@import 'styles/init';
+
+.wrapper {
+  /* Height: Enough to accommodate background pic */
+  height: 34.375rem;
+
+  /* Stretched background picture */
+  background-image: url(assets/images/photos/hero.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  /* Flexbox wrapper, to center children */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* Flex item - just one, and centered */
+  & .content {
+    /* We need to set an explicit height to appease IE 11 */
+    height:18.75rem;
+
+    /* IE11 needs an explicit width */
+    width: 100%;
+
+    /* It's a flex container! */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    @media only screen and (max-width: 749px) {
+      padding: 15px;
+    }
+
+    /* Headline */
+    & .headline {
+      & h1 {
+        text-align: center;
+        font-family: "Roboto-Regular";
+        font-size: 3.5rem;
+        color: var(--white);
+
+        /* Strikethrough 'harder' in the headline */
+        & em {
+          text-decoration: line-through;
+        }
+
+        /* Service mark */
+        & sup {
+          font-size: 2rem;
+          vertical-align: super;
+        }
+      }
+
+      /* Sub-header */
+      & h2 {
+        text-align: center;
+        text-transform: uppercase;
+        color: #fff;
+        line-height: 1.5rem;
+      }
+    }
+
+    /* Video play button */
+    & .play {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 6.25rem;
+
+      @media only screen and (max-width : 749px) {
+        margin: 16px 0;
+      }
+
+      & .circle {
+        width: 4.625rem;
+        height: 4.625rem;
+        background-image: url(assets/images/icons/circle.svg);
+        background-size: 100% 100%;
+        opacity: 0.85;
+
+        /* Flex container! */
+        display: flex;
+
+        /* Align the play button to be perfectly centered */
+        justify-content: center;
+        align-items: center;
+
+        /* Flex item - play button */
+        & img {
+          height: 2.8125rem;
+          width: 2.8125rem;
+        }
+      }
+
+      /* Flex item - 'watch demo' text */
+      & h3 {
+        color: var(--white);
+        font-size: 1rem;
+      }
+    }
+
+    /* CTA button */
+    & .button {
+      text-align: center;
+    }
+  }
+}

@@ -1,0 +1,45 @@
+@import 'styles/init';
+
+.button {
+
+  /* Defaults for 'orange', regular sized button */
+  font-family: "Roboto-Regular";
+  color: var(--white);
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  background-color: var(--orange);
+  border: 0;
+  padding: 0.3125rem 1.5625rem;
+
+  /* Set the cursor to 'pointer', so the user knows it's clickable */
+  cursor: pointer;
+
+  /* Default 'hover' state */
+  &:hover {
+    opacity: 0.85;
+  }
+
+  &.pink {
+    background-color: var(--pink);
+    color: var(--dark-grey);
+  }
+
+  &.dark-grey {
+    font-size: 1rem;
+    color: var(--green);
+    width: 100%;
+    background-color: var(--dark-grey);
+    padding: 10px;
+  }
+
+  &.yellow{
+    background-color: var(--button-colour);
+    color: var(--white);
+    width: 100%;
+  }
+}
+
+/* size='small' */
+.small {
+  font-size: 1.2rem;
+}

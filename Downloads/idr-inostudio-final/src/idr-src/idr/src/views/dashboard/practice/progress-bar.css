@@ -1,0 +1,41 @@
+@import 'styles/init';
+
+.progress_bar {
+  width: 100%;
+}
+
+.progress_bar_top {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 30px;
+  padding-top: 4px;
+}
+
+.line {
+  width: 100%;
+  height: 5px;
+  background: var(--light-grey);
+}
+
+.progress_bar_status {
+  margin-top: 10px;
+  font-size: 11px;
+}
+
+.all_question {
+  color: var(--green);
+}
+
+.completed {
+  height: 5px;
+  background: var(--green);
+}
+
+.btn_close {
+  & svg {
+    fill: var(--green);
+    width: 20px;
+    cursor: pointer;
+  }
+}

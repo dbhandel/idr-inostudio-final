@@ -1,0 +1,117 @@
+.pin {
+  position: absolute;
+  width: 35px;
+  height: 35px;
+  color: #263238;
+  background-color: currentcolor;
+
+  &.mod-left {
+    &::before {
+      left: 0;
+    }
+    .tooltip__text {
+      border-left: 1px solid;
+    }
+    .tooltip__viewport {
+      left: 100%;
+    }
+  }
+
+  &.mod-right {
+    &::before {
+      right: 0;
+    }
+    .tooltip__text {
+      border-right: 1px solid;
+    }
+    .tooltip__viewport {
+      right: 100%;
+    }
+  }
+
+  &.mod-top {
+    &::before {
+      bottom: 100%;
+    }
+  }
+
+  &.mod-bottom {
+    &::before {
+      top: 100%;
+    }
+  }
+
+  &.mod-left.mod-top {
+    &::before {
+      border-color: transparent transparent currentcolor currentcolor;
+    }
+  }
+
+  &.mod-right.mod-top {
+    &::before {
+      border-color: transparent currentcolor currentcolor transparent;
+    }
+  }
+
+  &.mod-left.mod-bottom {
+    &::before {
+      border-color: currentcolor transparent transparent currentcolor;
+    }
+  }
+
+  &.mod-right.mod-bottom {
+    &::before {
+      border-color: currentcolor currentcolor transparent transparent;
+    }
+  }
+
+  &.is-open {
+    .pin__viewport {
+      width: 178px;
+    }
+  }
+
+  .pin__icon {
+    width: 23px;
+    height: 23px;
+    padding: 5px;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-width: 10px 7px;
+    border-style: solid;
+  }
+}
+
+.pin__text {
+  box-sizing: border-box;
+  display: block;
+  width: 178px;
+  height: 100%;
+  color: #95c8b1;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 19px;
+  text-align: center;
+  white-space: nowrap;
+  line-height: 35px; /* height tooltip */
+  cursor: pointer;
+
+  &:hover {
+    color: #fff;
+  }
+}
+
+.pin__viewport {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 0;
+  overflow: hidden;
+  transition: width .25s ease;
+  background-color: currentcolor;
+}

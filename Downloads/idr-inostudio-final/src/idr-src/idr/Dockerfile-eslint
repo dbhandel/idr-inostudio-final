@@ -1,0 +1,15 @@
+FROM node:7.1.0
+
+WORKDIR /www
+
+RUN npm i -g eslint \
+  babel-eslint@^7.0.0 \
+  eslint-config-airbnb@^13.0.0 \
+  eslint-config-airbnb-base@^10.0.1 \
+  eslint-plugin-babel@^3.3.0 \
+  eslint-plugin-import@^2.0.1 \
+  eslint-plugin-jsx-a11y@^2.2.3 \
+  eslint-plugin-react@^6.6.0
+
+COPY . .
+CMD eslint src

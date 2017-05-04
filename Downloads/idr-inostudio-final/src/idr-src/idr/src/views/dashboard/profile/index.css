@@ -1,0 +1,10 @@
+@import 'styles/init';
+
+.content {
+  display: flex;
+  flex: 1;
+  position: relative;
+  flex-basis: auto;
+  justify-content: center;
+  align-items: center;
+}

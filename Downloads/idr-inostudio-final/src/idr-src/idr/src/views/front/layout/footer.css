@@ -1,0 +1,124 @@
+@import 'styles/init';
+
+.footer{
+  width: 100%;
+  background-color: var(--dark-grey);
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  & > * {
+    padding-top: var(--spacing);
+  }
+
+  & .footerRow{
+    width: 100%;
+    max-width: 46.875rem;
+
+    display: flex;
+    text-align: center;
+    flex-wrap: wrap;
+    padding: var(--spacing) 15px 0;
+
+    & .footerLeftColumn {
+      flex: 1 70%;
+      min-width: 0;
+      padding-bottom: 1rem;
+
+      & ul {
+        width: 100%;
+        max-width: 46.875rem;
+
+        display: flex;
+        flex-wrap: wrap;
+
+        & li {
+          cursor: pointer;
+          opacity: .5;
+          color: var(--green);
+          text-transform: uppercase;
+          padding: 0.3125rem;
+          flex-basis: auto;
+          width: 33%;
+          text-align: left;
+
+          &:hover {
+            opacity: 1;
+          }
+        }
+      }
+    }
+
+    & .footerRightColumn {
+      display: flex;
+      align-items: left;
+      justify-content: left;
+      flex-wrap: wrap;
+      flex-direction: row;
+
+      flex: 1 30%;
+      min-width: 0;
+      padding-bottom: 1rem;
+
+      @media (max-width: 749px) {
+        flex: 0 1 auto !important;
+        align-items: center;
+        margin: 0 auto;
+      }
+
+      & ul {
+        display: flex;
+
+        margin: 0;
+        padding: 0.25rem;
+
+        @media (max-width: 320px) {
+          margin: 0 auto;
+        }
+
+        & li {
+          display: inline;
+          margin-right: 0.3125rem;
+          padding: 0.1875rem;
+
+          & .socialIcon{
+            opacity: .5;
+
+            & img {
+              width: 1.6em;
+              height: 1.6em;
+              cursor: pointer;
+            }
+
+            &:hover {
+              opacity: 1;
+            }
+          }
+        }
+      }
+
+      & aside {
+        display: flex;
+        align-self: flex-end;
+
+        @media (max-width: 749px) {
+          align-self: auto;
+          margin-left: 20px;
+        }
+
+        @media (max-width: 320px) {
+          margin: 0 auto;
+        }
+
+        & p {
+          color: var(--green);
+          margin-bottom: 0rem;
+          font-size: 0.8rem;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,73 @@
+@import 'styles/init';
+
+.recall-edit {
+  background-color: var(--dark-grey);
+  display: flex;
+  height: 44px;
+  width: 280px;
+  position: relative;
+
+  & .recall-edit_title {
+    text-transform: uppercase;
+    color: var(--green);
+    flex: 2;
+    font-size: 1.5rem;
+    text-align: center;
+    margin-bottom: 0;
+    padding: 22px;
+    border-right: 1px solid var(--green);
+    font-weight: bold;
+    word-spacing: 3px;
+    line-height: 5px;
+
+    @mixin M {
+      padding: 13px;
+    }
+  }
+
+  & button {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+
+    & svg {
+      width: 2rem;
+      fill: var(--green);
+    }
+  }
+
+  &:after {
+    content: "";
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 0 20px 17px;
+    border-color: transparent transparent var(--dark-grey) transparent;
+    position: absolute;
+    right: 0;
+    top: -20px;
+  }
+
+  & .recall-edit_text {
+    background-color: white;
+    padding: 0.5rem 1rem;
+    margin: 0;
+    border: 1px solid var(--dark-grey);
+    border-top: none;
+    flex: 2;
+  }
+
+  & .recall-edit_conteiner {
+    display: flex;
+    flex-direction: column;
+  }
+
+  & .reverse {
+    flex-direction: column-reverse;
+
+    & .recall-edit_text {
+      border: 1px solid var(--dark-grey);
+      border-bottom: none;
+    }
+  }
+}

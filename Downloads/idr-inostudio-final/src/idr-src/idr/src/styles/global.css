@@ -1,0 +1,93 @@
+/* Third-party lib */
+@import 'reset.css';
+/* Includes */
+@import 'init';
+
+* {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  font-family: "Roboto-Light";
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  font-size: 14px;
+}
+
+body {
+  max-width: 100%;
+  /* looks hard, may be need refactor */
+  & > div:first-child {
+    height: 100%;
+  }
+}
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+}
+
+p {
+  line-height: 1.2rem;
+  margin-bottom: 2rem;
+  color: var(--dark-blue);
+}
+
+a {
+  color: var(--green);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+*, *:before, *:after {;
+  box-sizing: border-box;
+}
+
+textarea, input, button, select {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+html {
+  /* for screens <768 */
+  @mixin XS {
+    font-size: 14px;
+  }
+  @mixin S {
+    font-size: 14px;
+  }
+
+  /* for screens > 992 */
+  @mixin M {
+    font-size: 15px;
+  }
+
+  /* for screens > 1200 */
+  @mixin L {
+    font-size: 15px;
+  }
+
+  @mixin XL {
+    font-size: 16px;
+  }
+
+  /* for 4k screens > 3840 */
+  @mixin XXL {
+    font-size: 24px;
+  }
+}
+
+:global .no-margin{
+  margin: 0 !important;
+}
+
+:global .no-padding{
+  padding: 0 !important;
+}
+
+/* load fonts */
+@mixin font-face Roboto-Light;
+@mixin font-face Roboto-Regular;
+@mixin font-face icons;

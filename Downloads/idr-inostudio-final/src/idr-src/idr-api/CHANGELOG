@@ -1,0 +1,758 @@
+0.19.2
+-------------------------------------------------------
+* Adds cross-env, for passing environment variables to NPM in Windows
+
+0.19.1
+-------------------------------------------------------
+* Improves Docker migration script
+* Adds RabbitMQ for job queues
+* Switches Docker to vanilla Node 7.4, to avoid Alpine build steps
+* Adds `scripts/create_database.js` for building DB if it doesn't already exist
+* Changes DB name from 'idr_dev' to 'idr_staging', to reflect the correct environment
+
+0.19.0
+-------------------------------------------------------
+* Adds SQL logging
+* Adds schema migration for .sql files
+* Adds search and filtering on tags and free-form text
+* Adds `results.sql` total count on user ID
+* Adds ts_vector searching via PostgreSQL
+
+0.18.0
+-------------------------------------------------------
+* Bumps Node to 7.3.0
+* Implements Alpine Docker image, to reduce build sizes
+* Adds `getRecalls` function, pagination and sorting and cursor offsets
+* Adds `text` search schema, for handling free-form input
+* Adds SQL files for recall searches and ordering
+
+0.17.0
+-------------------------------------------------------
+* Adds style tag CSS parsing and sanitisation, to prevent CSS-based XSS
+* Adds authorised CSS attributes (font-size, width, height, color)
+* Adds class validation, to enable image alignment, borders, sizing and effects
+* Adds detailed HTML tag/attribute validation/sanitisation
+* Adds `cheerio` server-side DOM parsing on `questionHTML` and `answerHTML`
+
+Add NPM:
+"cheerio": "^0.22.0",
+"css": "^2.2.1",
+
+0.16.4
+-------------------------------------------------------
+* Adds `nodemon` watcher for .sql files in dev mode
+* Refactors `deleteOnId.sql` to take multiple recall IDs as part of an 'IN' search
+* Refactors `recall.deleteRecall` method
+* Adds `recall.deleteByIds` for deleting multiple IDs on /recall/delete POST route
+* Adds `recall.deleteAll` for deleting all recalls on /recalls DELETE route
+* Adds `recallSchema.ids` method, for validating multiple IDs against UUID
+
+0.16.3
+-------------------------------------------------------
+* Adds /tags/recall route, for retrieving unique tags on recalls
+* Adds getTags.sql query
+* Fixes search to prevent pulling back deleted recalls
+
+0.16.2
+-------------------------------------------------------
+* Fixes staging config
+
+0.16.1
+-------------------------------------------------------
+* Adds migration for DB relations
+* Adds pgAdmin4 to local Docker dev stack
+
+0.16.0
+-------------------------------------------------------
+* Lifts `ForOfStatement` ban, inherited from Airbnb base
+* Adds new database orchestration
+* Adds weighted recall search algorithm based on tags and free-form text
+* Adds search field schema
+* Adds handling of multiple deadlines
+* Removes unnecessary DB migrations
+* Improves environment-based configuration loading
+* Improves DB handling
+* Improves JWT authentication, without making calls to the DB
+* Refactors `recalls` service
+* Improves DB efficiency by replacing ORMs with direct driver queries
+* Replaces `recall_tags` table with more efficient JSONB column
+* Bumps Node to 7.2.1
+* Adds cacheable SQL query files and query minimisation strategy
+* Adds extended querystring handling for array input
+* Adds cached/shared SQL column config
+
+* Adds NPM:
+ "koa-qs": "^2.0.0",
+ "pg-promise": "^5.4.7"
+
+0.15.1
+-------------------------------------------------------
+* Adds CORS config
+
+* Adds NPM:
+"koa-cors": "git+https://git@github.com/kunyan/koa-cors.git#next",
+
+0.15.0
+-------------------------------------------------------
+* Adds Koa-based REST interface
+* Re-implements users, recalls
+* Improves recall tags, making it simpler to query by tag across DB tables
+* Adds async/await to Knex DB migration
+* Bumps to Node 7.2.0
+* Adds JWT config
+* Adds Knex query builder, to handle offset, limits and total counts
+* Adds custom exception handler for HTTP codes
+* Fixes fieldErrors handler
+* Adds `authenticate` middleware, to auto-load user before handling route
+* Adds `recall.mergeTags`, to add tags as a post-hook
+* Adds `updateRecall` PUT route, to update a recall/tags in-place
+* Removes redundant `tags` table
+* Removes `tags` model
+* Adds POST /login route
+* Adds POST /user (create user) route
+* Adds POST /user (get user info) route
+* Adds GET /recalls (get recalls) route
+* Adds POST /recall (create new recall) route
+* Adds DELETE /recall/:id (delete recall by ID) route
+* Adds PUT /recall/:id (update recall by ID) route
+* Adds `recall.id` schema validation
+* Improves `server.js`, to create a new route handler per service
+
+* Adds Knex migrations:
+- Recalls-delete
+- Recalls-tags
+
+* Adds NPM:
+"jsonwebtoken": "^7.1.9",
+"knex": "^0.12.6",
+"koa": "^2.0.0",
+"koa-body": "^2.0.0",
+"koa-router": "^7.0.1",
+"lodash": "^4.17.0",
+"microseconds": "^0.1.0",
+
+0.14.0
+-------------------------------------------------------
+* Migrations questions and answers to use HTML/Plain versions inside of recall models
+* Updates validators to sanitize HTML input, and check on HTML/Plain versions
+
+* Adds NPM:
+"sanitize-html": "^1.13.0"
+
+0.13.3
+-------------------------------------------------------
+* Removes user payload object on Feathers authentication
+
+0.13.2
+-------------------------------------------------------
+* Removes GraphQL whitelisting
+* Adds migration for `sessions` table
+* Adds Primus in place of Socket.io
+
+0.13.1
+-------------------------------------------------------
+* Removes `session` model (replaced by JWT/local auth)
+* Fixes merge conflicts with 0.13.0
+
+0.13.0
+-------------------------------------------------------
+* Removes Sequelize migrations
+* Removes Sequelize seeders folder
+* Removes Sequelize `config.json` configuration
+* Add UNIQUE index to `tags.tag` table, for faster tag look-up
+* Adds `Tag.format()` method, for trimming/lower-casing tags before save
+* Adds Knex migrations
+* Adds transaction strategy to Knex Models
+* Adds per-request caching for SQL queries
+* Adds caching invalidation on mutations
+* Adds `Tag` type to `User` (all tags), `Recalls` (recall-specific)
+* Adds reverse `Tag` -> `Recalls` query path
+* Adds User-level `addTags` mutation
+* Adds Feathers.js, for real-time client -> API comms
+* Adds Feathers Knex service
+* Adds Feathers Authentication
+* Adds Feathers Errors
+* Removes redundant tests
+* Adds service orchestration for users, recalls, tags
+* Adds JWT-based and local auth strategies
+
+* Adds NPM:
+- "lodash": "^4.17.0"
+- "uuid": "^2.0.3"
+- "feathers": "^2.0.2",
+- "feathers-authentication": "^0.7.12",
+- "feathers-authentication-local": "^0.2.0",
+- "feathers-errors": "^2.5.0",
+- "feathers-hooks": "^1.6.1",
+- "feathers-hooks-common": "^2.0.1",
+- "feathers-knex": "^2.5.0",
+- "feathers-rest": "^1.5.2",
+- "feathers-socketio": "^1.4.2",
+
+* Drops NPM:
+"amqplib": "^0.5.0",
+"apollo-server": "^0.3.2",
+"arangojs": "^5.0.3",
+"bookshelf": "^0.10.2",
+"bookshelf-uuid": "^1.0.0",
+"boom": "^4.0.0",
+"bufferutil": "^1.2.1",
+"continuation-local-storage": "^3.2.0",
+"country-data": "0.0.31",
+"elasticsearch": "^12.0.1",
+"google-libphonenumber": "^2.0.3",
+"graphql": "^0.7.0",
+"jsonwebtoken": "^7.1.9",
+"koa": "^2.0.0",
+"koa-body": "^1.6.0",
+"koa-convert": "^1.2.0",
+"koa-cors": "0.0.16",
+"koa-graphql": "0.5.6",
+"koa-router": "^7.0.1",
+"messagebird": "^2.1.0",
+"microseconds": "^0.1.0",
+"rabbit.js": "^0.4.4",
+"sendwithus": "^2.9.2",
+"sequelize": "^4.0.0-1",
+"simple-nexmo": "^2.2.1",
+"utf-8-validate": "^1.2.1",
+"winston": "^2.2.0",
+"winston-loggly": "^1.3.1",
+"ws": "^1.1.1",
+"xxhashjs": "^0.2.1"
+"apollo-client": "^0.5.1",
+"chai": "^3.5.0",
+"cheerio": "^0.22.0",
+"eslint-plugin-react": "^6.6.0",
+"faker": "^3.1.0",
+"get-port": "^2.1.0",
+"graphql-tag": "^0.1.13",
+"request-promise-native": "^1.0.3"
+
+0.12.0
+-------------------------------------------------------
+* Replaces Sequelize with Knex to fix transactional integrity
+* Improves tag insertion performance from 100ms/tag to < 5ms/tag
+* Adds migrations in Knex
+* Adds Bookshelf ORM
+* Adds development, staging and production configurations for DB
+* Fixes `server.js` bootstrap to use a valid NODE_ENV
+* Adds Knex-based DB orchestration, ping and modelling
+* Adds `graphql/functions` helpers
+* Adds `resolveUser` GraphQL resolve wrapper, to throw an error if user is not authorized
+* Adds `errorWrapper` to return validation errors on user-invoked mutations
+* Adds static mutation loading
+* Adds `tags` to `UserSchema`
+* Adds `deadline` to `UserSchema`
+* Updates tags to allow 255 characters
+* Improves server routing to use session middleware and body parsing on select routes
+* Adds db experiment test
+
+* Refactors GraphQL:
+- `DateType`
+- `RecallType`
+- `SessionType`
+- `UserType`
+
+* Adds models:
+- `Recall`
+- `RecallTag`
+- `Tag`
+- `User`
+
+* Adds NPM:
+- "bookshelf": "^0.10.2"
+- "bookshelf-uuid": "^1.0.0"
+- "knex": "^0.12.6"
+
+* Bumps NPM:
+- "amqplib": "^0.5.0"
+- "country-data": "0.0.31"
+- "elasticsearch": "^12.0.1"
+- "apollo-client": "^0.5.1"
+- "eslint-config-airbnb": "^13.0.0",
+- "eslint-config-airbnb-base": "^10.0.1",
+- "eslint-plugin-jsx-a11y": "^2.2.3",
+- "eslint-plugin-react": "^6.6.0"
+
+0.11.1
+-------------------------------------------------------
+* Improves name validation on `createUser` mutation
+
+0.11.0
+-------------------------------------------------------
+* Updates `createUser` mutation to use a single `name` var instead of explicit `firstName` and `lastName`
+* Adds error messages for missing first/last name parts from `name` input
+
+* Adds NPM:
+- "humanname": "^0.2.2
+
+0.10.0
+-------------------------------------------------------
+* Adds `User` type to `Session`, for nested GraphQL of logged in user
+* Improves stateless session handling via JWT
+* Replaces `node6` preset with `node7`
+
+* Bumps NPM:
+- babel-preset-node7": "^1.2.0
+
+* Drops NPM:
+- "babel-plugin-syntax-async-functions": "^6.13.0",
+- "babel-preset-node6": "^11.0.0",
+
+0.9.0
+-------------------------------------------------------
+* Bumps Docker node to 7.0.0
+* Adds native async/await transpilation with harmony flag via `npm run server`
+* Fixes `user.checkEmailIsUnique()`
+* Adds `destroySession` mutation
+* Removes NPM packages:
+- "babel-plugin-transform-async-to-generator": "^6.8.0"
+
+0.8.0
+-------------------------------------------------------
+* Adds "Authorization: cookie" option, to optionally pass/set a cookie-based token
+
+0.7.0
+-------------------------------------------------------
+* Bumps `Dockerfile` node version to 6.9.1
+* Adds `nodemon`, `compose/dev.yml` and `compose/dev.sh` to run hot-reloading Docker dev stack
+* Replaces `express-graphql` reference implementation with production-ready Apollo Server
+* Updates `scripts/dev.sh` to use the --build switch instead of an explicit build step
+* Adds `Error` and `Errors` type to GraphQL, to handle field/message user errors
+* Improves `loadMutations` function to use GraphQLUnionType, to detect user errors on fragments
+* Adds .git to `Dockerignore`
+* Replaces NPM with Yarn
+* Drops cookie-based Network Interface for Apollo, in favour of stateless JWT tokens
+* Renames `src/db_models` to `src/models`
+* Fixes linting to pass ESLint
+* Adds Exceptions -> ValidationError.`toGraphQLErrors()` helper
+* Improves GraphQL error handling move validation outside of `maskErrors` helper
+* Cleans up ArangoDB models
+
+* Adds NPM:
+- "apollo-server": "^0.3.2"
+- "babel-eslint": "^7.0.0",
+- "eslint": "^3.6.0",
+- "eslint-config-airbnb": "^12.0.0",
+- "eslint-config-airbnb-base": "^9.0.0",
+- "eslint-plugin-babel": "^3.3.0",
+- "eslint-plugin-import": "^2.0.1",
+- "eslint-plugin-jsx-a11y": "^2.2.2",
+- "eslint-plugin-react": "^6.3.0",
+
+* Bumps NPM:
+- "country-data": "0.0.30"
+- "google-libphonenumber": "^2.0.3"
+- "validator": "^6.1.0"
+
+v0.6.1
+-------------------------------------------------------
+* Adds correct CORS configuration
+
+v0.6.0
+-------------------------------------------------------
+* Changes `X-Response-Time` header to `Response-Time` per [RFC 6648](https://tools.ietf.org/html/rfc6648)
+* Adds JWT secured 'Authorization'-header tokens
+* Drops `browser` from `sessions` table -- now 'User-Agent' headers form part of the JWT secret
+
+v0.5.0
+-------------------------------------------------------
+* Adds early Relay-compatible API for retrieving root GraphQL sessions
+* Improves GraphQL type handling
+
+* Adds NPM:
+- graphql-relay": "^0.4.3"
+
+v0.4.0
+-------------------------------------------------------
+* Major overhaul of transaction and CLS handling for guaranteed data pipelines
+* Server.js refactor to allow multiple simultaneous servers and isolated environments
+* Improves transaction chains, for moving data throughout multiple database systems
+* Improves schema migrations -- now bi-directional
+* Improves run and test pipelines
+* Adds experimental ChakraCore pipeline, for native async/await
+* Adds `recallTags` many-to-many model, for bi-directional tagging relationships and searching
+
+* Bumps NPM:
+
+- apollo-client": "^0.4.15"
+- "moment": "^2.15.0"
+- "mysql2": "^1.0.0-rc.12"
+- "validator": "^5.7.0"
+- "apollo-client": "^0.4.15"
+
+* Adds `createTagOnRecall` GraphQL method
+* Adds `db.transaction`, for spawning new/attaching to existing transaction chains
+* Adds `db.rollback`, for rolling back at the end of a Mocha test, regardless of thrown exceptions
+* Improves `server.js` start-up script to bind session handling to CLS context
+* Adds `graphql.createTag` test helper
+* Adds `lib/server.js` class for instantiating multiple test servers
+
+* Adds `Tag` tests:
+- should throw on empty tag
+- should throw when tag length > 64
+- should add a tag
+- should return the same tag when it already exists
+
+* Adds `Recalls` tests:
+- should throw on user that isn't logged in
+- should throw on missing fields
+- should create a recall
+
+* Adds `Session` tests:
+- should have a valid session
+
+* Adds `Transaction` tests:
+- should keep within transaction context
+- should maintain context
+- should re-use existing transaction context
+- should create new transaction contexts
+
+* Adds `User` tests:
+- should throw missing errors
+- should throw minimum length errors
+- should throw maximum length errors
+- should throw on bad e-mail
+- should sign-up a new user
+- should handle login properly
+
+v0.3.0
+-------------------------------------------------------
+* Adds Percona server
+* Adds Elastic Search server
+* Moves non-transactional ArangoDB models over to Percona models
+* Adds Sequelize for Percona models
+* Adds Elastic Search instrumentation
+* Adds Elastic Search /ping/elastic endpoint
+* Moves /session route to /ping/session
+* Removes `compose/.env`
+* Adds migration Docker Compose configuration to `compose/migrate.yml`
+* Adds Percona to `compose/run.yml`
+* Adds Percona to `compose/test.yml`
+* Refactors `config/config.json` with valid Percona credentials
+* Bumps Dockerfile to node:6.5.0
+* Adds `Dockerfile-chakra` for Node ChakraCore async/await testing
+* Adds `scripts/migrate.sh` migration script for orchestrating Docker and migrating SQL
+* Adds `npm run migrate` entry to `package.json`
+* Removes redundant source map support from `server.js` entry script
+
+* Adds migration files:
+
+- 20160831182844-create-sessions.js
+- 20160901121335-create-users.js
+- 20160901121636-add-index-users-email.js
+- 20160901122004-add-sessions-userId.js
+- 20160904164857-change-sessions-userId.js
+- 20160904184046-create-recalls.js
+- 20160905055414-change-recalls-userId.js
+- 20160905083841-create-tags.js
+- 20160905140142-change-tags.js
+- 20160905140508-create-recallTags.js
+- 20160905145248-add-tags-dates.js
+
+* Removes redundant model files
+
+* Adds/bumps NPM packages:
+
+"babel-plugin-transform-async-to-module-method": "^6.8.0",
+"babel-plugin-transform-decorators-legacy": "^1.3.4",
+"babel-plugin-transform-runtime": "^6.15.0",
+"babel-preset-node5": "^11.1.0",
+"babel-preset-stage-1": "^6.13.0",
+"babel-register": "^6.14.0",
+"boom": "^4.0.0",
+"continuation-local-storage": "^3.1.7",
+"country-data": "0.0.29",
+google-libphonenumber": "^1.1.0",
+"graphql": "^0.7.0",
+"koa-graphql": "0.5.6"
+"mysql2": "^1.0.0-rc.11",
+"sequelize": "^4.0.0-1",
+"validator": "^5.6.0",
+"apollo-client": "^0.4.14",
+"graphql-tag": "^0.1.13",
+"hollaback": "^1.1.1",
+
+* Removes from `package.json`:
+
+Unused Dependencies
+* babel-plugin-transform-async-to-module-method
+* babel-plugin-transform-decorators-legacy
+* babel-plugin-transform-runtime
+* babel-preset-node5
+* babel-preset-stage-1
+* kpg
+* le_node
+* random-number-generator
+* source-map-support
+
+Unused devDependencies
+* disposable-mail
+* hollaback
+* uuid
+* webdriverio
+
+* Removes `src/config.js`
+
+* Adds Percona model files:
+
+- Sessions
+- Users
+- Recalls
+- Tags
+
+* Refactors `src/db.js` to work with Percona
+* Adds CLS namespacing to Sequelize for implicit transaction handling
+* Adds `src/elasticsearch.js` for Elastic Search connections
+* Improves commentary to missing documentation
+* Fixes GraphQL types to point to underlying Sequelize models
+* Fixes GraphQL error handling for DB exceptions
+* Fixes GraphQL mutation handling for Sequelize models
+* Adds `SequelizeError` exception type
+* Adds GraphQL `Tag` type
+* Adds relationship for GraphQL Session -> User queries
+* Adds relationship for GraphQL User - Recalls queries
+* Adds relationship for GrapHQL Recalls -> Tags queries
+* Adds `normalizeInput` helper, for normalizing public form/GraphQL input
+
+* Adds input masks/schemas for:
+- User
+- Recall
+- Tag
+
+* Adds Elastic Search and Percona connection handling to `src/server.js` `start` method
+* Refactors `clear` block in `test/lib/common.js`, for DB clean-up after tests
+* Fixes `test/lib/graphql` calls to correctly use `id` instead of `key`
+* Refactors test `collectionKeys` to use loaded DB models instead of string table names
+* Adds `graphql.createRecall` for GraphQL testing
+* Refactors tests to use Percona server
+
+v0.2.0
+-------------------------------------------------------
+* Adds `recall.getRecall()` method, for retrieving an instance of the `Recall` model
+* Adds custom cookie jar to `test.common.getApolloClient()` to enable chained/synchronous GraphQL calls
+* Adds `test/lib/fixtures.js` with `validUser` and `validRecall`, for use with GraphQL tests
+* Adds `graphql.getSessionUser()` to `test/graphql.js`- boilerplate for retrieving a session & user in one GraphQL query
+* Removes `common.after()` function, in favour of letting each `describe()` block manage its own DB clearing
+* Adds `common.clear()` to clear/empty registered DB assets and `collectionKeys` anywhere inside a test block
+* Adds Elastic Search library
+* Updates `compose/common.yml` to provision Elastic Search server
+* Updates `compose/run.yml` and `compose/test.yml` to link to Elastic Search server
+* Adds `elasticsearch.ping()`, for re-attempting connections 100x to linked Elastic Search service
+* Adds exported `elasticsearch.client`, to query Elastic Search globally
+* Adds sample /elastic route, to test connectivity to Elastic Search server
+
+* Recall tests that now pass:
+
+- Missing fields
+-- should throw on missing question/title
+-- should throw on missing answer
+
+- Create recall
+-- should have an entry in the DB
+-- should have a loaded `Recall` model
+-- should have an equal `Recall` instance & DB document
+
+* Replaces `isomorphic-fetch` implementation with `request-promise-native`, for improved cookie control
+* Adds `apolloRequest` network interface for Apollo, to use a `request`-based transport protocol
+* Adds `test/lib/graphql.js`, exporting GraphQL convenience functions that can be used globally in tests
+* Adds `graphql.createRecall()`, for testing the recall API
+* Adds `graphql.createUser()`, for adding new users
+* Adds `graphql.login()`, for associating new or existing users with test sessions
+
+* Recall tests that now pass:
+
+- Validation
+-- Credentials
+--- should throw on user that isn't logged in
+
+* Adds stubs for the following recall tests:
+
+- Missing fields
+-- should throw on missing question
+-- should throw on missing answer
+
+- Create recall
+-- should create a recall
+-- should add a tag
+-- should remove a tag
+
+- Search recalls
+
+* User tests that now pass:
+
+- User sign-up
+-- should match password
+-- should fail on bad password
+-- should let the user login
+-- should deny login on unregistered e-mail
+
+* Removes redundant `test2` folder
+* Adds `common.getCookieValue()` to pull values from `request` cookies
+* Adds `common.startNewSession()` to create a new session and return the response, request options and cookie jar
+* Moves test `sessions.createUserGraphQL()` to `common.createUserGraphQL()`, for access across multiple tests
+* Adds GraphQL client instance to `common.before()` for guaranteed availability to all tests
+* Refactors `sessions` and `users` test runners to reference functions in `common`
+* Adds `common.getApolloClient()` -- accepts dynamic request params; returns an Apollo Client for GraphQL queries
+
+* Adds `common.collectionKeys` Set to track keys used throughout tests
+* Adds `common.registerKey()` function to registering a key against a collection, to later ref/clean-up
+* Adds `common.after()` block, to run an AQL query and remove documents created in testing
+* Passes `Users` test correctly, including user sign-up / tear-down
+
+* User tests that now pass:
+
+- should throw on missing e-mail
+- should throw on missing first name
+- should throw on missing last name
+- should throw on missing password
+- should throw on first name < 2 characters
+- should throw on last name < 2 characters
+- should throw on password < 6 characters
+- should throw on first name > 64 characters
+- should throw on last name > 64 characters
+- should throw on password > 128 characters
+- should throw on malformed e-mail
+- should have an entry in the DB
+- should have a loaded `User` model
+- should have an equal User instance & DB document
+
+* Improves testing layout by moving set-up/teardown code into separate blocks
+* Refactors test blocks to use sub-`describe` with associated logic
+* Creates new `test` folder, and moves the old code into `test2`
+* Adds `user.getUser()` method, for retrieving a `User` object based on a dynamic query
+* Adds `common.generateCharacters()` function, for generating random strings of variable length
+* Adds `after()` clean-up stub to 'common' testing block (runs after tests have finished)
+* Adds `common.IDs` Set to allow post-testing clean-up of DB assets
+* Refactors `common.startServer()` to return void -- invokes a singleton server instance
+* Refactors `server.start()` method to return a Promise on start, allowing awaiting on pre-startup
+* Adds `src/env` helper, to register required environment variables and exit with error on omission
+* Adds 'ARANGO_USER', 'ARANGO_PASSWORD', 'ARANGO_DATABASE' env requirement to `src/arangodb.js`
+* Adds 'PORT' env requirement to `server.js` root entry script
+* Refactors `http` tests to use `fetch` instead of relying on external services
+* Adds `common.buildURL()` function for returning a FQN path to the dynamically assigned local server path
+* Adds `common.getGraphqlClient()` for returning a GraphQL transport that factors local/dynamic port
+* Adds `script/kill.sh` to forcibly tear-down Docker & Docker Compose containers and volumes for a guaranteed clean environment
+* Adds `script/run.sh` for orchestrating a dynamic full-stack build
+* Adds `script/test.sh` for optimised local testing -- tests now start in ~5 seconds
+* Adds `compose/common.yml` for common/base Docker Compose services
+* Adds `compose/run.yml` that extends base with a full-stack build
+* Adds `compose/test.yml` to initialise the full-stack for a Mocha test runner
+* Adds dynamic testing to `script/test.sh` by passing the `--grep` option to Mocha on CLI arguments
+
+v0.1.6
+-------------------------------------------------------
+* Refactors versioning to reflect pre-MVP development
+* Removes redundant Docker Compose files, in favour of separate Rancher configuration
+* Removes Selenium test runner from the Docker Compose file (now orchestrated off-site)
+* Adds isomorphic `fetch` and `request` native promises as a HTTP client
+* Adds Cheerio DOM parsing
+* Adds local testing; testing is now 5-10x faster and can be done pre-commit/push
+
+v0.1.5
+-------------------------------------------------------
+
+* Adds user tests:
+* 'balk at missing first name' (improved)
+
+
+v0.1.5
+-------------------------------------------------------
+* No longer runs the build pipeline on every commit.  Instead, builds are now initiated only when pushing tags.  This allows earlier pushes that don't necessarily require new Docker files or repeat testing/deployment.
+* Renames build steps to format a little better on Gitlab
+* Adds `NotLoaded` exception, to throw on empty models
+* Adds `session.remove()` method, for deleting the underlying session document from ArangoDB
+* Adds initial placeholders for test runners: Queues, users, recalls
+* Adds `getSessionCookie()` function to session test, for invoking a Selenium instance and receiving the session cookie
+* Adds `getSession()` function to session test, for retrieving a loaded `Session` model based on a browser request
+* Adds Apollo Client config, for connecting to GraphQL API endpoints
+* Adds Faker, for creating fake profiles that can be used to test `users` model
+* Adds `disposable-mail`, for creating real temporary e-mail addresses used to test e-mail send/receive
+* Adds `generateUser()` helper to user test, for generating a fake profile with a real e-mail address
+* Adds `createUserGraphQL` helper to user test, for invoking the `createUser` GraphQL mutation
+
+* Adds HTTP tests:
+- 'return a 404 on a missing route'
+
+* Adds session tests:
+- 'reload the same session on repeat visits'
+- 'update expiration'
+- 'remove a session'
+- 'generate new session when current expires'
+
+* Adds user tests:
+- 'balk at missing first name'
+
+* Adds NPM modules:
+"apollo-client": "^0.4.11",
+"disposable-mail": "^0.1.0",
+"faker": "^3.1.0",
+"graphql-tag": "^0.1.11",
+"isomorphic-fetch": "^2.2.1",
+"request-promise": "^4.1.1",
+
+
+v0.1.4
+-------------------------------------------------------
+* Removes orphan flags from `docker-compose down` command
+
+
+v0.1.3
+-------------------------------------------------------
+* Attempts to fix failing test runner
+
+
+v0.1.2
+-------------------------------------------------------
+* Attempts to fix failing test runner
+* Kills actively running Docker Compose containers
+
+
+v0.1.1
+-------------------------------------------------------
+* Attempts to fix failing test runner
+* Uses selenium/standalone-chrome:2.53.0 instead of 'latest' tag, to keep version-specific
+* Adds `startServer()` method to test/config, for starting a server singleton to be used across tests
+* Adds `whenReady()` method to test/config, for detecting when external services are ready
+* Removes test/setup in favour of per-test before/after hooks
+* Fixes http and session tests
+
+
+v0.1.0
+-------------------------------------------------------
+* Adds test configuration for Docker compose
+* Adds Chrome Selenium server to test environment
+* Adds `hollaback` test client, to check whether Selenium and the stack are ready before commencing browser tests
+
+* Adds HTTP tests:
+-- Adds /ping test
+-- Adds /ping.json test
+-- Adds /graphql test
+
+* Adds Session tests
+-- Adds 'create session' test
+
+* Adds NPM modules:
+-- "chai": "^3.5.0",
+-- "get-port": "^2.1.0",
+-- "hollaback": "^1.1.0",
+-- "uuid": "^2.0.2",
+-- "webdriverio": "^4.2.5"
+
+* Adds `RecordNotFound` exception
+* Adds `models.sessions.getSession()` method for retrieving sessions based on dynamic searches
+* Adds `getClient()` method to Mocha config setup
+* Adds `before` hook to Mocha, to await stack orchestration and local spawning of server before running tests
+
+* Bumps NPM:
+-- "lodash": "^4.14.2" to ^4.14.3
+
+* Bumps Docker stack:
+-- rabbitmq:3.6.3 to 3.6.5
+
+
+v0.0.1
+-------------------------------------------------------
+* Initial commit
+* Adds updated Docker Compose config that uses nginx proxies

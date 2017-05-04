@@ -1,0 +1,12 @@
+@import 'styles/init';
+
+.recall-items {
+  margin: 0;
+  width: 100%;
+  flex: 1;
+  border-top: 1px solid var(--grey);
+  background-color: var(--light-grey-background);
+  @mixin XS {
+    border-top: 2px solid var(--grey);
+  }
+}

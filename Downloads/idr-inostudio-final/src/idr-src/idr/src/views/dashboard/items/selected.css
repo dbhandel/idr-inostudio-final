@@ -1,0 +1,85 @@
+@import 'styles/init';
+
+.panel {
+  position: fixed;
+  bottom: calc(0px + var(--left-panel-indent-bottom));
+  width: 100%;
+
+  @mixin M {
+    bottom: 0;
+  }
+}
+
+.selected {
+  background-color: var(--dark-grey);
+  text-align: center;
+  color: var(--green);
+  padding: 20px 0 20px;
+  font-size: 1.5em;
+  margin-bottom: 1px;
+  text-transform: uppercase;
+
+  & svg {
+    fill: var(--green);
+    position: relative;
+    right: 20px;
+    top: 2px;
+  }
+
+  & .bold {
+    font-weight: 600;
+  }
+}
+
+.due {
+  background-color: var(--orange);
+  text-align: center;
+  color: var(--dark-grey);
+  padding: 20px 0 20px;
+  font-size: 1.5em;
+  margin-bottom: 1px;
+  text-transform: uppercase;
+
+  & svg {
+    fill: var(--dark-grey);
+    position: relative;
+    right: 20px;
+    top: 2px;
+  }
+
+  & .bold {
+    font-weight: 600;
+  }
+}
+
+.groupButtons {
+  display: flex;
+  flex-direction: row;
+
+  & button {
+    flex: 1;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    text-transform: uppercase;
+    padding: 20px 0 20px;
+    font-size: 1.5em;
+    margin-bottom: 1px;
+
+    &.delete {
+      background-color: var(--red);
+      color: white;
+    }
+
+    &.cancel {
+      background-color: var(--dark-grey);
+      color: var(--green);
+    }
+  }
+
+  & svg {
+    fill: white;
+    margin-right: 10px;
+    width: 20px;
+  }
+}

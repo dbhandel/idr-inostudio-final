@@ -1,0 +1,35 @@
+@import 'styles/init';
+
+.container {
+  height: 100%;
+  position: relative;
+  padding: var(--header-height) 0 var(--left-panel-indent-bottom) 0;
+  @mixin M {
+    padding: var(--header-height) 0 0 var(--left-panel-indent-left);
+    overflow: hidden;
+  }
+}
+
+/* Container for search bar + master-detail view */
+.content {
+  flex: 1;
+  height: 100%;
+}
+
+/* Container for search bar + master-detail view with button*/
+.content-with-buttons {
+  height: calc(100% - var(--button-size));
+}
+
+/* Don't remove those selectors for hide bottom panel om mobile when keyboard is active */
+.buttons-container{
+
+}
+
+.nav-container{
+
+}
+
+.recall-container{
+
+}

@@ -1,0 +1,33 @@
+version: '2'
+services:
+  rabbitmq:
+    extends:
+      file: common.yml
+      service: rabbitmq
+  postgres:
+    extends:
+      file: common.yml
+      service: postgres
+    ports:
+      - 5432:5432
+  pgadmin:
+    image: registry.git.leebenson.com/utils/pgadmin4:2.0.3
+    links:
+      - postgres
+    ports:
+      - 5050:5050
+  server:
+    extends:
+      file: common.yml
+      service: server
+    links:
+      - rabbitmq
+      - postgres
+    ports:
+      - 5000:5000
+    volumes:
+      - ..:/app
+      - /app/node_modules
+    environment:
+      NODE_ENV: "development"
+    command: nodemon -x "node --harmony-async-await" -e js,json,sql server

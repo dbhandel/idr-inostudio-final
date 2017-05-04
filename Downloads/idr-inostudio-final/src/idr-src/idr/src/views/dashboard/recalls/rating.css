@@ -1,0 +1,46 @@
+@import 'styles/init';
+
+.section {
+  display: flex;
+  background-color: var(--dark-grey);
+  padding: 0.625rem;
+
+  justify-content: space-around;
+
+  /* Disable native selection */
+  user-select: none;
+
+}
+
+.star {
+  width: 1.875rem;
+  height: 1.875rem;
+  fill: var(--dark-green);
+  cursor: pointer;
+  transition: fill .1s;
+
+  & svg {
+    width: 1.875rem;
+    height: 1.875rem;
+  }
+
+  &.rate1 {
+    fill: var(--red);
+  }
+
+  &.rate2 {
+    fill: var(--orange);
+  }
+
+  &.rate3 {
+    fill: var(--green);
+  }
+
+  &.rate4 {
+    fill: var(--green);
+  }
+
+  &.rate5 {
+    fill: var(--white);
+  }
+}

@@ -1,0 +1,19 @@
+@import 'styles/init';
+
+.no-search-result {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: var(--mid-grey);
+  & h2 {
+    font-size: 1.875rem;
+    margin-bottom: 2rem;
+
+  }
+  & h3 {
+    font-size: 1.375rem;
+  }
+}

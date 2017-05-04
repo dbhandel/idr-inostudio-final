@@ -1,0 +1,96 @@
+@import 'styles/init';
+
+.section {
+
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  & > * {
+    padding: var(--spacing);
+  }
+
+  & header {
+
+    & h2, & h3 {
+      font-family: "Roboto-Regular";
+      font-size: 1.8rem;
+      max-width: 100%;
+      text-transform: uppercase;
+    }
+
+    & h2 {
+      color: var(--green);
+    }
+
+    & h3 {
+      color: var(--dark-blue);
+    }
+  }
+
+  & figure {
+    padding: 0 var(--spacing);
+    display: flex;
+    flex-direction: column;
+
+    & > * {
+      width: 100%;
+      padding: 0.625rem;
+    }
+
+    & img {
+      max-width: 12.5rem;
+      align-self: center;
+      order: 1;
+    }
+
+    & figcaption {
+      order: 2;
+
+      & p {
+        &.name {
+          font-family: "Roboto-Regular";
+          margin-bottom: 0;
+        }
+        &.byline {
+          font-size: 0.8rem;
+          line-height: 1rem;
+        }
+      }
+    }
+  }
+
+  @media (--tablet) {
+    align-items: center;
+
+    & > * {
+      width: 46.875rem;
+    }
+
+    & figure {
+      flex-direction: row;
+
+      & img {
+        flex-basis: 40%;
+        align-self: flex-start;
+      }
+
+      & figcaption {
+        flex-basis: 60%;
+        flex-grow:1;
+      }
+
+      /* Switch order of img/caption */
+      &:nth-child(even) {
+        & img {
+          order: 2;
+        }
+
+        & figcaption {
+          order: 1;
+        }
+      }
+    }
+  }
+
+}

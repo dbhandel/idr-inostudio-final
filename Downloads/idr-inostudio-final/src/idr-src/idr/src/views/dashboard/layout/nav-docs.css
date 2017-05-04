@@ -1,0 +1,239 @@
+@import 'styles/init';
+
+:root {
+  --border-width: 0.625rem;
+}
+
+.section {
+  user-select: none;
+  display: flex;
+  background-color: var(--green);
+  /*box-shadow: inset 0 (-var(--border-width)) #4C665A;*/
+  justify-content: space-between;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: var(--left-panel-indent-bottom);
+  box-shadow: 9px 0 0 0 var(--green) inset;
+  z-index: 9000;
+  position: fixed;
+
+  & .secondary {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    width: 25px;
+
+    @mixin M {
+      width: auto;
+    }
+
+    & .button {
+      /* Stretch "More" button container to occupy all available space */
+      width: 100%;
+
+      @mixin M {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  /* stack icons vertically on tablet landscape / desktop */
+  @mixin M {
+    flex-direction: column;
+    border-bottom: 0;
+    height: auto;
+    min-height: 31rem;
+    top: var(--header-height);
+    width: var(--left-panel-indent-left);
+    box-shadow: 7px 0 0 0 var(--dark-green) inset;
+    & .secondary {
+      margin-top: auto;
+    }
+  }
+
+  & .button {
+    flex-grow: 1;
+
+    /* Buttons are links - make the clickable */
+    cursor: pointer;
+
+    /* Flex container - column, center aligned */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 255;
+    background: var(--green);
+    /* Desktop, Tablet Landscape */
+    @mixin M {
+      flex-grow: 0;
+      padding: 1.2rem 0 1.2rem 0.4rem;
+      box-shadow: 7px 0 0 0 var(--dark-green) inset;
+    }
+
+    /* Icons are SVGs */
+    & svg {
+      fill: var(--dark-grey);
+      width: 1.4rem;
+      height: 2rem;
+      padding: 0 0 0.3rem;
+      @mixin M {
+        width: 2rem;
+      }
+    }
+
+    /* Link text */
+    & h3 {
+      font-family: "Roboto-Regular";
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      padding: 0;
+      margin: 0;
+      color: var(--dark-blue);
+      @mixin M {
+        padding: 0.8rem 0 0;
+        font-size: 0.8rem;
+      }
+    }
+
+    /* Show a stats circle */
+    & .circled {
+      position: relative;
+
+      /* By default, don't show the circle.  Only if we
+       have a .show class */
+      & div {
+        z-index: 3;
+        font-size: 0.5rem;
+        position: absolute;
+        bottom: 0.5333333333333333rem;
+        left: 63%;
+        border-radius: 10px;
+        background-color: var(--orange);
+        text-align: center;
+        white-space: nowrap;
+        min-width: 10px;
+        padding: 3px 7px;
+      }
+
+      /* Show the circle class if we have .show */
+      &.show {
+        & div {
+          min-width: 1.3rem;
+          font-family: "Roboto-Regular";
+          font-size: 0.57rem;
+          padding: 3px 5px;
+          @mixin M {
+            font-size: 0.8rem;
+            padding: 5px 3px;
+          }
+        }
+      }
+
+      &.circle {
+        & div {
+          min-width: 0.9375rem;
+        }
+      }
+    }
+
+    /* Hover state */
+    &:hover {
+      & h3 {
+        color: var(--dark-grey);
+      }
+      z-index: 255;
+      background-color: hsl(152, 32%, 78%);
+
+      @mixin M {
+        box-shadow: 7px 0 0 0 var(--white) inset;
+      }
+    }
+  }
+
+  & .active {
+    & h3 {
+      color: var(--dark-grey);
+    }
+    z-index: 255;
+    background-color: hsl(152, 32%, 78%);
+
+    @mixin M {
+      box-shadow: 7px 0 0 0 var(--white) inset;
+    }
+  }
+}
+
+@keyframes go-up {
+  from {
+    height: 0;
+  }
+  to {
+    height: 180px;
+  }
+}
+
+@keyframes go-up-desktop {
+  from {
+    top: 90%;
+  }
+  to {
+    top: 40%;
+  }
+}
+
+
+.animation-up {
+  animation: go-up 0.3s ease-out;
+
+  @mixin M {
+    animation: go-up-desktop 0.3s ease-out;
+  }
+}
+
+.animation-down {
+  animation: go-down 0.3s ease-in;
+  animation-fill-mode: forwards;
+
+  @mixin M {
+    /*display: none;*/
+    animation: go-down-desktop 0.3s ease-in;
+    animation-fill-mode: forwards;
+  }
+}
+
+.button_group {
+  position: absolute;
+  background: #95c8b1;
+  width: 100%;
+  bottom: 50px;
+
+  & .button {
+    border-bottom: 1px solid white;
+    padding: 15px;
+
+    & h3 {
+      font-size: 1rem;
+    }
+  }
+
+  & svg {
+    display: none;
+  }
+
+  @mixin M {
+    position: absolute;
+    top: 24rem;
+
+    & .button {
+      border-bottom: none;
+
+      & svg {
+        display: block;
+      }
+    }
+  }
+}

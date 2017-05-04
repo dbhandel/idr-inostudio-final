@@ -1,0 +1,15 @@
+docker:
+  stage: build
+  script:
+   - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $CI_REGISTRY
+   - docker build -t $CI_REGISTRY_IMAGE:${CI_BUILD_TAG} .
+   - docker push $CI_REGISTRY_IMAGE:${CI_BUILD_TAG}
+  after_script:
+   - docker login -u readonly -p zb8nir7UCVuaMgQfREhzkCpAqZK7DQ $CI_REGISTRY
+  only:
+    - tags
+
+eslint:
+  stage: test
+  script:
+    - bash scripts/eslint.sh

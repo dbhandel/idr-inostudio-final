@@ -1,0 +1,40 @@
+@import 'styles/init';
+
+:root {
+  --padding: 0.625rem;
+}
+
+.main {
+  /* left action is expanded, text is shown */
+  &.slideRightLong {
+    transform: translate3d(11rem, 0, 0) !important;
+  }
+
+  /* right action is expanded, text is shown */
+  &.slideLeftLong {
+    transform: translate3d(-11.6875rem, 0, 0) !important;
+  }
+}
+
+/* Padded icon container makes icon clicks a little easier */
+.icon {
+  padding: var(--padding);
+
+  & .doc {
+    fill: var(--green);
+    transition: fill .2s;
+  }
+
+  &:hover .doc {
+    fill: var(--dark-grey);
+  }
+
+  & .trash {
+    fill: var(--green);
+    transition: fill .2s;
+  }
+
+  &:hover .trash {
+    fill: var(--red);
+  }
+}

@@ -1,0 +1,49 @@
+@import 'styles/init';
+
+.tag-bar {
+  width: 100%;
+
+  & .tag-input-component {
+    border: 0.0625rem solid var(--mid-grey);
+    min-height: 40px;
+    padding: 0 5px;
+    width: 100%;
+
+    /* make sure the content is vertically center aligned without tags */
+    display: flex;
+    align-items: center;
+
+    & > span {
+      width: 100%;
+      padding-right: 0.4rem;
+    }
+
+    & .tag {
+      background-color: var(--green);
+      padding: 0.3rem 0.8rem;
+      margin: 0.2rem;
+      color: var(--white);
+      max-width: 100%;
+      word-wrap: break-word;
+
+      /* make sure the tags wrap around nicely for mobile */
+      display: inline-block;
+
+      & a {
+        cursor: pointer;
+        font-weight: bold;
+        margin-left: 0.1rem;
+        color: var(--white);
+      }
+    }
+
+    & input {
+      border: none;
+      outline: none;
+      font-size: 1rem;
+      font-weight: 100;
+      margin-left: 0.3rem;
+      max-width: 100%;
+    }
+  }
+}

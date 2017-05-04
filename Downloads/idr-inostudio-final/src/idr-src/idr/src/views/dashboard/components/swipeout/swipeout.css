@@ -1,0 +1,281 @@
+@import 'styles/init';
+
+:root {
+  --padding: 0.625rem;
+  --icon-width: 1.25rem;
+  --icon-height: 1.25rem;
+  --light-grey-hover: color(var(--light-grey) lightness(-3%));
+  --max-height: calc(1.25rem + (0.625rem * 2));
+}
+
+.swipeout {
+  max-width: 100%;
+
+  display: flex;
+  background-color: var(--light-grey);
+
+  position: relative;
+
+  /* Borders -- give the effect of the box being a table row or
+   a large button, because users can interact with it */
+  border-top: 0.0625rem solid var(--white);
+  border-bottom: 0.0625rem solid var(--mid-grey);
+
+  /* Make it clickable */
+  cursor: pointer;
+
+  /* Disable native selection */
+  user-select: none;
+
+  overflow: hidden;
+  transform-style: preserve-3d;
+  transition: background-color .2s;
+
+  /* Note, I am not using :hover here because that gets trigged on mobile touch devices */
+  &.hover {
+    background-color: color(var(--light-grey) lightness(-3%)) !important;
+  }
+
+  /* Specific height */
+  height: var(--max-height);
+  max-height: var(--max-height);
+  margin-left: 1px;
+  /* The <Main> component that stores our recall information */
+  & .main {
+    display: flex;
+    align-items: center;
+    padding: var(--padding);
+    flex-grow: 1;
+    max-width: 100%;
+    transition: background-color .2s, transform .2s;
+
+    & svg {
+      height: var(--icon-height);
+      min-height: var(--icon-height);
+      width: var(--icon-width);
+      min-width: var(--icon-width);
+
+      fill: var(--mid-grey);
+      transition: fill .2s;
+    }
+
+    /* Paragraph text should be truncated so that the recall
+      can always fit on the bar */
+    & p {
+      flex-shrink: 1;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin: 0;
+      text-align: left;
+      padding-left: var(--spacing);
+    }
+
+    &.active {
+      background-color: white;
+      transition: background-color 0s, transform .15s;
+    }
+  }
+
+  /* When a swipeout is selected (with a 'press' event), the icon
+    should turn darker to indicate that it's been selected */
+  &.selected {
+    & .main {
+      /*box-shadow: 5px 0px 0px 0px var(--green) inset;*/
+			
+			background-color: white;
+      & svg {
+        fill: var(--orange);
+      }
+    }
+  }
+
+  &.selectedBorderStyle {
+    & .main {
+      box-shadow: 5px 0px 0px 0px var(--green) inset;
+
+      & svg {
+        fill: var(--dark-grey);
+      }
+    }
+  }
+
+  &.selectedBorderStyle {
+    & .main {
+      box-shadow: 5px 0px 0px 0px var(--red) inset;
+
+      & svg {
+        fill: var(--dark-grey);
+      }
+    }
+  }
+
+  /* Common properties for both left/right actions */
+  & .action {
+    position: absolute;
+    padding: var(--padding);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /* Make clickable */
+    cursor: pointer;
+
+    /* Never shrink - this will prevent text/icons from
+      overflowing */
+    flex-shrink: 0;
+    transition: transform .2s;
+
+    /* Float above main content to make it clickable */
+    z-index: 2;
+
+    /* By default, text shouldn't display.  Only when the icon
+      is tapped a second time should the text display */
+    & h3 {
+      text-transform: uppercase;
+      color: var(--white);
+      margin: 0;
+      display: flex;
+    }
+
+    /* Icons could be either <img> or <svg> tags, so style
+      accordingly */
+    & svg {
+      height: var(--icon-height);
+      min-height: var(--icon-height);
+      width: var(--icon-width);
+      min-width: var(--icon-width);
+    }
+
+    /* Always fill <svg>s to white */
+    & svg {
+      fill: var(--white);
+    }
+  }
+
+  /* Left action-specific properties */
+  & .left {
+    display: flex;
+    align-items: center;
+    position: relative;
+    left: 0;
+    background-color: var(--green);
+
+    /* Stretch green background color regardless how far you swipe out */
+    &:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      width: 600%;
+      height: 100%;
+      background: inherit;
+      z-index: -1;
+      right: 100%;
+      margin-right: -0.0625rem;
+    }
+
+    & h3 {
+      margin-right: 0.9375rem;
+    }
+
+    /* Fully slides out action button on tap */
+    &.slide {
+      transform: translate3d(100%, 0, 0) !important;
+    }
+  }
+
+  /* Right action-specific properties */
+  & .right {
+    position: relative;
+    display: flex;
+    align-items: center;
+    right: 0;
+    background-color: var(--red);
+
+    /* Stretch red background color regardless how far you swipe out */
+    &:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      width: 600%;
+      height: 100%;
+      background: inherit;
+      z-index: -1;
+      left: 100%;
+      margin-left: -0.0625rem;
+    }
+
+    & h3 {
+      margin-left: 0.9375rem;
+    }
+
+    /* Fully slides out action button on tap */
+    &.slide {
+      transform: translate3d(-100%, 0, 0) !important;
+    }
+  }
+
+  /* Desktop/Laptop view only */
+  & .hoverActions {
+    opacity: 0;
+    right: 0;
+    height: 100%;
+    width: 7.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    position: absolute;
+
+    /* Make clickable */
+    cursor: pointer;
+
+    /* Never shrink - this will prevent text/icons from
+      overflowing */
+    flex-shrink: 0;
+    transform: translateX(110);
+
+    /* Avoid accidental taps on a invisible element */
+    z-index: -1;
+
+    & svg {
+      height: var(--icon-height);
+      min-height: var(--icon-height);
+      width: var(--icon-width);
+      min-width: var(--icon-width);
+    }
+
+    &.fadeIn {
+      opacity: 1;
+      z-index: 1;
+    }
+
+    /* reserved for "opened" state in master-detail view */
+    &.active {
+      background: linear-gradient(to left, #fff 70%, rgba(#fff, .25) 95%, transparent 100%);
+    }
+  }
+}
+
+.borderGreen {
+  box-shadow: 5px 0px 0px 0px var(--green) inset;
+}
+
+.borderRed {
+  box-shadow: 5px 0px 0px 0px var(--red) inset;
+}
+/* Left action wrapper (off-screen) */
+.actionContainerLeft {
+  position: absolute;
+  display: flex;
+  left: 0;
+  transform: translateX(-100%);
+}
+
+/* Right action wrapper (off-screen) */
+.actionContainerRight {
+  position: absolute;
+  display: flex;
+  right: -0.0625rem; /* fix an edge case when resizing browser window */
+  transform: translateX(100%);
+}

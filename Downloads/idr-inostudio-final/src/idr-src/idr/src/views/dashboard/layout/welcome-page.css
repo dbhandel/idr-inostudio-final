@@ -1,0 +1,26 @@
+@import 'styles/init';
+
+.title {
+	background: var(--green);
+	font-weight: bold;
+	margin-top: 3rem;
+  padding: 2rem 2rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.email {
+	color: var(--green);
+}
+
+.subjectLine {
+	color: var(--red);
+}
+
+p {
+	padding: 0 2rem;
+}
+
+.content {
+	padding-top: 1.8rem;
+}

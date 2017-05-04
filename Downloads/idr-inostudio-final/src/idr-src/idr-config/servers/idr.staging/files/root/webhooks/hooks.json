@@ -1,0 +1,7 @@
+[
+  {
+    "id": "idr-front",
+    "execute-command": "/root/webhooks/idr-front.sh",
+    "command-working-directory": "/root/webhooks"
+  }
+]

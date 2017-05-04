@@ -1,0 +1,8 @@
+@import 'styles/init';
+
+.divider{
+  width: 100%;
+  color: var(--dark-grey);
+  font-size: 1.3rem;
+  text-align: center;
+}

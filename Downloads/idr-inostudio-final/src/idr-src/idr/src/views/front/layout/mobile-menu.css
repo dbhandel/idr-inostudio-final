@@ -1,0 +1,128 @@
+@import 'styles/init';
+
+.section {
+  background-color: var(--green);
+  position: absolute;
+  top: 0;
+  width: 100%;
+
+  /* Should be positioned *above* the regular menu */
+  z-index: 2;
+
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: flex-start;
+
+  /* Each divider is a separate nav link */
+  & .divider {
+    width: 100%;
+    display: flex;
+
+    & div {
+
+      /* Left-most block */
+      &:first-of-type {
+        background-color: var(--dark-grey);
+        width: 3.125rem;
+        flex-basis: auto;
+        border-bottom: 0.0625rem solid var(--medium-grey);
+      }
+
+      /* Middle block */
+      &:nth-of-type(2n) {
+        width: 3.125rem;
+        flex-basis: auto
+      }
+
+      /* Where the main link goes */
+      &:last-of-type {
+        display: flex;
+        padding: var(--spacing);
+        border-bottom: 0.0625rem solid var(--medium-grey);
+        flex-grow:1;
+
+        /* Lighter font */
+        font-size: 1.2rem;
+        color: var(--medium-grey);
+
+        /* Text should be uppercase */
+        text-transform: uppercase;
+
+        /* IDR logo */
+        & .idrLogo {
+          width: 6.25rem;
+          height: 4.375rem;
+        }
+
+        /* 'x' close icon */
+        & .xIcon {
+          width: 1.875rem;
+          height: 1.875rem;
+          flex-grow: 0;
+          background-color: transparent;
+          cursor: pointer;
+
+          /* Set a margin top + right */
+          margin: 0.625rem 0.625rem 0 0;
+
+          & svg {
+            width: 1.875rem;
+            height: 1.875rem;
+            fill: var(--dark-grey);
+            stroke: var(--dark-grey);
+            stroke-width: 0.125rem;
+          }
+        }
+      }
+    }
+
+    /* Show a border when hovered hover, *unless* this is a
+      blank divider */
+    &:hover:not(.noHover) {
+      cursor: pointer;
+      & div {
+        &:first-of-type {
+          border-left: 0.625rem solid var(--orange);
+        }
+        &:last-of-type {
+          font-family: "Roboto-Regular";
+        }
+      }
+    }
+
+    /* If noBorder, hide the bottom-border and add some
+     padding to finish off the menu */
+    &.noBorder {
+      & div {
+        border-bottom: none;
+      }
+    }
+
+    /* Remove any padding, if we don't need it */
+    &.noPadding {
+      & div {
+        padding: 0;
+      }
+    }
+
+    /* Extra padding (for the last element) */
+    &.endMargin {
+      & div:last-of-type {
+        margin-bottom: 3.125rem;
+      }
+    }
+
+    /* Align right? */
+    &.alignRight {
+      & div:last-of-type {
+        justify-content: flex-end;
+      }
+    }
+  }
+}
+
+/* Hide if it's not active */
+.hide {
+  display: none;
+}

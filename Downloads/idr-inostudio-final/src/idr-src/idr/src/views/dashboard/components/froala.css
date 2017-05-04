@@ -1,0 +1,159 @@
+@import 'styles/init';
+
+@define-mixin fr-common-border {
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  border-top: none;
+}
+
+@define-mixin fr-common-buttons {
+  border-bottom: none !important;
+  padding-left: 0;
+  padding-right: 0;
+  background-color: var(--light-grey) !important;
+}
+
+:global .fr-wrapper {
+  max-width: 100%;
+  @mixin fr-common-border {
+  }
+
+  & .fr-placeholder {
+    padding-left: 10px;
+  }
+}
+
+:global .fr-toolbar {
+  @mixin fr-common-border {
+  }
+  @mixin fr-common-buttons {
+  }
+
+  & .fr-command {
+    &.fr-btn {
+      &.fr-active {
+        background-color: var(--orange) !important;
+        color: black !important;
+      }
+    }
+  }
+}
+
+:global .fr-popup {
+  @mixin fr-common-border {
+  }
+  border: 0.0625rem solid var(--mid-grey) !important;
+
+  & .fr-buttons {
+    @mixin fr-common-border {
+    }
+    @mixin fr-common-buttons {
+    }
+  }
+
+  & .fr-colors-tabs {
+    margin-left: 0;
+    margin-right: 0;
+
+    & .fr-colors-tab {
+      &.fr-selected-tab {
+        color: var(--orange) !important;
+      }
+      &::after {
+        background-color: var(--orange) !important;
+      }
+      &:hover {
+        color: var(--orange) !important;
+      }
+    }
+  }
+
+  & .fr-command {
+    &.fr-btn {
+      &.fr-active {
+        background-color: var(--orange) !important;
+        color: black !important;
+      }
+    }
+  }
+
+  & .fr-input-line {
+    & input[type=text]:focus {
+      border-bottom: solid 2px var(--orange);
+    }
+    & textarea:focus {
+      border-bottom: solid 2px var(--orange);
+    }
+  }
+
+  & .fr-action-buttons {
+    & button {
+      &.fr-command {
+        color: var(--orange);
+      }
+    }
+  }
+
+  & .fr-arrow {
+    top: -6px !important;
+    border-bottom: 5px solid var(--mid-grey) !important;
+  }
+}
+
+:global .fr-element {
+  font-size: 1rem;
+  border: 0.0625rem solid var(--mid-grey) !important;
+  padding: 7px 10px !important;
+
+  & p {
+    line-height: 1.5rem;
+    margin-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  & strong {
+    font-weight: bold;
+  }
+
+  & em {
+    font-style: italic;
+  }
+
+  /* default values taken from http://www.w3schools.com/tags/tag_ol.asp */
+  & ul, & ol {
+    padding-left: 3.3rem;
+    margin: 1.1rem 0;
+  }
+
+  & ul {
+    list-style-type: disc;
+  }
+
+  & ol {
+    list-style-type: decimal;
+  }
+}
+
+:global .fr-btn {
+  margin: 0 !important;
+}
+
+.froala-wrapper {
+  padding-top: var(--froala-padding);
+  position: relative;
+  width: 100%;
+
+  & .froala-toolbar {
+    position: absolute;
+    width: inherit;
+    top: 0;
+  }
+
+  & .froala-editor {
+    width: inherit;
+    flex: 1;
+    color: var(--medium-grey);
+    font-size: 1.5rem;
+  }
+}

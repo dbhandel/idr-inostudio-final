@@ -1,0 +1,152 @@
+:root {
+  --black: #000;
+  --white: #fff;
+  --green: #95c8b1;
+  --dark-green: #4C665A;
+  --light-green: #DFEEE7;
+  --orange: #FBB03B;
+  --dark-orange: #E6AF3A;
+  --red: #EC2227;
+  --dark-red: #B51A1E;
+  --grey: #CCC;
+  --light-grey: #F2F2F2;
+  --light-grey-background: #F9F9F9;
+  --mid-grey: #B3B3B3;
+  --dark-grey: #263238;
+  --medium-grey: #5F686D;
+  --normal-grey: #8F8F8F;
+  --dark-blue: #515b5f;
+  --pink: #FEEFDA;
+  --brown: #514B3B;
+  --dark-dark: #172B35;
+
+  --inactive-link-color: #808080;
+  --button-colour: #e6af3a;
+
+  /* spacing */
+  --spacing: 1.5625rem;
+  --tablet: 750px;
+
+  /*panels sizes */
+  --header-height: 3.3333rem;
+  --left-panel-indent-bottom: 3.6rem;
+  --left-panel-indent-left: 5.333333333333333rem;
+  --button-size: 2.8rem;
+  --button-description-height: 2rem;
+
+  /* froala */
+  --froala-padding: 37px;
+}
+
+/* colors */
+
+@custom-media --tablet (min-width: 750px);
+
+/*********************
+FONT LOADER
+*********************/
+@define-mixin font-face $fontFamily {
+  @font-face {
+    font-family: $fontFamily;
+    src: url('assets/fonts/$(fontFamily)/$(fontFamily).eot'); /* IE9 Compat Modes */
+    src: url('assets/fonts/$(fontFamily)/$(fontFamily).eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+      /* url('assets/fonts/#{$fontFamily}/#{$fontFamily}.woff2') format('woff2'), /* Super Modern Browsers */
+    url('assets/fonts/$(fontFamily)/$(fontFamily).woff') format('woff'), /* Pretty Modern Browsers */
+    url('assets/fonts/$(fontFamily)/$(fontFamily).ttf') format('truetype'), /* Safari, Android, iOS */
+    url('assets/fonts/$(fontFamily)/$(fontFamily).svg#svgFontName') format('svg'); /* Legacy iOS */
+  }
+}
+
+/*********************
+MIN SIZING
+*********************/
+@define-mixin min-size $height, $width {
+  height: $height;
+  min-height: $height;
+  width: $width;
+  min-width: $width;
+}
+
+/*********************
+MAX HEIGHT
+*********************/
+@define-mixin max-height $height {
+  height: $height;
+  max-height: $height;
+}
+
+/*********************
+RESPONSIVE
+*********************/
+/*@define-mixin desktop {
+  @media only screen and (min-width: 1024px) {
+    @mixin-content;
+  }
+}
+
+@define-mixin tablet {
+  @media only screen and (min-width: 768px) {
+    @mixin-content;
+  }
+}
+
+@define-mixin tablet-landscape {
+  @media only screen and (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+    @mixin-content;
+  }
+}
+
+@define-mixin mobile {
+  @media only screen and (min-width: 320px) and (max-width: 480px) {
+    @mixin-content;
+  }
+}*/
+
+/* default styles are in the range 0-559px */
+@define-mixin XXXS {
+  @media only screen and (min-width: 320px) {
+    @mixin-content ;
+  }
+}
+
+@define-mixin XXS {
+  @media only screen and (min-width: 480px) {
+    @mixin-content ;
+  }
+}
+
+@define-mixin XS {
+  @media only screen and (min-width: 560px) {
+    @mixin-content ;
+  }
+}
+
+@define-mixin S {
+  @media only screen and (min-width: 768px) {
+    @mixin-content ;
+  }
+}
+
+@define-mixin M {
+  @media only screen and (min-width: 992px) {
+    @mixin-content ;
+  }
+}
+
+@define-mixin L {
+  @media only screen and (min-width: 1200px) {
+    @mixin-content ;
+  }
+}
+
+@define-mixin XL {
+  @media only screen and (min-width: 1615px) {
+    @mixin-content ;
+  }
+}
+
+@define-mixin XXL {
+  @media only screen and (min-width: 3840px) {
+    @mixin-content ;
+  }
+}

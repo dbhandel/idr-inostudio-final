@@ -1,0 +1,7 @@
+[
+  {
+    "id": "idr-api",
+    "execute-command": "/root/webhooks/idr-api.sh",
+    "command-working-directory": "/root/webhooks"
+  }
+]

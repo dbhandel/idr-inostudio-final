@@ -1,0 +1,80 @@
+@import 'styles/init';
+
+.container {
+  /*display: flex;*/
+  height: 100%;
+}
+
+.content {
+  display: flex;
+  justify-content:center;
+  flex-direction:column-reverse;
+  margin-top: 10%;
+  align-items: center;
+
+  @mixin S {
+    /*margin-top: 200px;*/
+    justify-content: center;
+    align-items: center;
+    flex-direction:row;
+    margin-left:0;
+  }
+
+  @mixin M {
+    margin-top: 200px;
+    justify-content: space-around;
+    flex-direction:row;
+    margin-left:0;
+  }
+
+}
+
+.noRecalls {
+  font-size: 22px;
+}
+
+.create {
+  font-weight: 600;
+}
+
+.text {
+  font-size: 18px;
+  text-align: center;
+  width: 253px;
+  & p {
+    color: #a7a9ac;
+  }
+}
+
+.image {
+  /*height: 250px;*/
+  width: 250px;
+}
+
+.arrowNav {
+  position: fixed;
+  z-index: 1;
+  left: 28%;
+  bottom: 5.7rem;
+  transform: rotate(-90deg);
+  height: 1.5rem;
+  width: 3rem;
+  @mixin S {
+    height: 3.125rem;
+    width: 6.25rem;
+    left: 27%;
+    bottom: 8.7rem;
+    transform: rotate(-90deg);
+  }
+  @mixin M {
+    height: 3.125rem;
+    width: 6.25rem;
+    left: 9.3rem;
+    top: var(--header-height);
+    margin-top: 7.5rem;
+    transform: rotate(0deg);
+  }
+}
+.showArrow {
+  display: block;
+}

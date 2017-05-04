@@ -1,0 +1,213 @@
+@import 'styles/init';
+
+:root {
+  --padding-for-component: 0.3rem 0.8rem;
+  --suggestion-text-colour: #95C8B1;
+}
+
+/* the entire search bar component */
+.search-bar-component {
+
+  /* the row with the tags, search input, icon and result count */
+  & .search-bar-row {
+    display: flex;
+    padding: 1.5rem 0;
+    min-height: 5.75rem;
+
+    & .button-and-results {
+      display: flex;
+      align-items: center;
+      align-self: flex-start;
+      margin-top: 0.4rem;
+      margin-right: 0.5rem;
+
+      /* the icon at the end of the row.. the magnifying glass */
+      & svg {
+        width: 2rem;
+        height: 2rem;
+        fill: var(--mid-grey);
+        margin: 0 0.8rem;
+        flex-shrink: 0;
+
+        &:hover {
+          cursor: pointer;
+        }
+      }
+
+      & .number-of-results {
+        font-size: small;
+        align-self: baseline;
+      }
+    }
+
+    & .search-bar {
+      border: 0.0625rem solid transparent;
+      display: flex;
+      align-items: center;
+      flex: 1;
+      flex-flow: row wrap;
+
+      & .tags {
+        display: flex;
+        align-items: center;
+        font-size: 1.3rem;
+        flex-wrap: wrap;
+
+        & .tag {
+          background-color: var(--green);
+          font-family: inherit;
+          padding: var(--padding-for-component);
+          margin: 0.2rem;
+          color: var(--dark-grey);
+          font-size: inherit;
+          border: none;
+          outline: none;
+          white-space: nowrap;
+
+          &:after {
+            margin-left: 0.5rem;
+            font-size: initial;
+            font-family: icons;
+            color: var(--white);
+            content: '\61';
+            font-size: 0.8rem;
+          }
+
+          &:hover {
+            color: var(--dark-grey);
+            cursor: pointer;
+          }
+        }
+      }
+
+      /* the search div that contains the input field and dropdown for autocomplete */
+      & .search {
+        flex: 2 0;
+
+        & .input-field {
+          display: inline-block;
+          width: 100%;
+
+          & input {
+            margin: 0;
+            padding: .3rem .1rem 0 .8rem;
+            font-family: inherit;
+            border: 0;
+            outline: none;
+            font-size: 1.8rem;
+            width: inherit;
+
+            &::placeholder {
+              font-size: 1.8rem;
+            }
+          }
+        }
+
+        /* the auto suggestion dropdown */
+        & .tag-suggestions {
+          position: absolute;
+          left: 0;
+          width: 100%;
+          z-index: 1;
+
+          & ul {
+            margin: 0.25rem -0.0625rem;
+            padding: 0;
+            list-style: none;
+            background-color: var(--dark-grey);
+            font-size: 1.5rem;
+
+            & li {
+              color: color(var(--suggestion-text-colour) a(70%)); /* all characters at 70% transparency */
+              padding: var(--padding-for-component);
+              letter-spacing: 0.1rem;
+
+              & mark {
+                background: none;
+                font-weight: bold;
+                color: var(--suggestion-text-colour);
+              }
+            }
+
+            /* make both the matches letters and unmatched white on hover */
+            & li:hover:not(.suggestion-active) {
+              cursor: pointer;
+              color: var(--white);
+              background-color: color(var(--dark-grey) lightness(+10%));
+
+              & mark {
+                color: var(--white);
+              }
+            }
+
+            & .suggestion-active {
+              color: var(--white);
+              background-color: color(var(--dark-grey) lightness(+10%));
+              & span {
+                color: var(--white);
+              }
+              & mark {
+                color: var(--white);
+              }
+            }
+          }
+        }
+      }
+    }
+
+    & .search-bar-focused {
+      border: 0.0625rem solid var(--green);
+    }
+  }
+
+  /* the ordering controls underneath the search bar */
+  & .ordering-controls {
+    display: flex;
+    flex-flow: row wrap;
+    position: relative;
+    margin-left: 1rem;
+    margin-bottom: 1rem;
+
+    & button {
+      border: none;
+      outline: none;
+      background: transparent;
+      padding-left: 0;
+
+      &.filter-select {
+        padding-right: 2rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        margin-top: -1px;
+      }
+
+      &.filter-delete {
+        cursor: pointer;
+        margin-top: -5px;
+        position: inherit;
+        right: 1rem;
+
+        @mixin S {
+          position: absolute;
+        }
+
+        & svg {
+          width: 1rem;
+          fill: var(--red);
+          position: relative;
+          top: 2px;
+          left: 2px;
+        }
+      }
+    }
+  }
+}
+
+.isHidden {
+  display: none;
+
+  @mixin M {
+    display: block;
+  }
+}

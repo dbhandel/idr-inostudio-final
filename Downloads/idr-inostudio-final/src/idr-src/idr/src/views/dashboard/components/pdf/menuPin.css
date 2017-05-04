@@ -1,0 +1,46 @@
+@import 'styles/init';
+
+.pin-menu {
+  background-color: var(--dark-grey);
+  display: flex;
+  width: 100px;
+  height: 44px;
+  position: relative;
+
+  & p.recall-create_title {
+    text-transform: uppercase;
+    color: var(--green);
+    flex: 2;
+    font-size: 1.5rem;
+    text-align: center;
+    margin-bottom: 0;
+    padding: 13px;
+    border-right: 1px solid var(--green);
+    font-weight: bold;
+    word-spacing: 3px;
+  }
+
+  & button {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    flex: 1;
+
+    & svg {
+      width: 2rem;
+      fill: var(--green);
+    }
+  }
+
+  &:after {
+    content: "";
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 0 20px 17px;
+    border-color: transparent transparent var(--dark-grey) transparent;
+    position: absolute;
+    right: 0;
+    top: -20px;
+  }
+}

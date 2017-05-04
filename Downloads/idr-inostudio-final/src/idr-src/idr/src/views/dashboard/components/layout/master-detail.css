@@ -1,0 +1,54 @@
+@import 'styles/init';
+
+/* Container for master and detail views */
+.master-detail {
+  display: flex;
+  flex: 1; /* take up all available space */
+  height: 100%;
+  overflow: hidden;
+  width: 100%;
+}
+
+/* Doc/Recall items on the left */
+.master {
+  position: relative;
+  flex: 1;
+  flex-wrap: wrap;
+  overflow-y: auto;
+  background-color: white;
+
+  /* Hide master view on mobile layouts, e.g. when editing recall */
+  &.hide {
+    flex: 0;
+    width: 0;
+
+    /* Show master on tablet layouts, even when editing recall */
+    @mixin M {
+      flex: 1;
+    }
+  }
+}
+
+/* Detailed info for doc/recall items on the right */
+.detail {
+  /*display: none;*/
+  flex: 1;
+  max-width: 100%;
+  display: flex;
+  overflow-y: auto;
+  border-left: 1px solid var(--grey);
+  @mixin XS {
+    border-left: 2px solid var(--grey);
+  }
+  &.show {
+    display: flex;
+  }
+}
+
+.none {
+  display: none;
+
+  @mixin M {
+    display: flex;
+  }
+}

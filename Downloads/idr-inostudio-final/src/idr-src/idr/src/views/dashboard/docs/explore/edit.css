@@ -1,0 +1,91 @@
+@import 'styles/init';
+
+/* Placeholder when no item is selected */
+.placeholder {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--green);
+  background-color: var(--light-green);
+  padding: 0 1.875rem;
+  width: 100%;
+
+  & h2 {
+    margin-bottom: 1.25rem;
+  }
+
+  & .cards {
+    flex: 1;
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 0.9375rem;
+  }
+
+  & .arrow {
+    margin-top: 0.625rem;
+    max-width: 6.25rem;
+  }
+
+  & .title {
+    margin-top: 0.625rem;
+    padding: 0 2.5rem;
+    font-size: 1.875rem;
+    line-height: 1.2em;
+  }
+
+  & .subtitle {
+    padding: 0 2.5rem;
+    font-size: 1.375rem;
+    line-height: 1.2em;
+  }
+}
+
+/* Bottom row buttons (cancel, save/edit recall) */
+.controls {
+  display: flex;
+
+  & .button {
+    flex: 1;
+    padding: 10px;
+    font-family: "Roboto-Regular";
+    font-size: 1rem;
+    color: var(--green);
+    background-color: var(--dark-grey);
+    border: 0;
+    cursor: pointer;
+    text-transform: uppercase;
+    margin-top: auto;
+  }
+
+  & .button + & .button {
+    border-left: 1px solid var(--green);
+  }
+}
+
+.container {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.content {
+  display: flex;
+  height: 100%;
+}
+
+.master-view{
+  width: 100%;
+  overflow-y: auto;
+}
+
+.master-view-with-buttons{
+  height: calc(100% - calc(var(--button-size) + var(--button-description-height)));
+}
+
+/*.container {
+  display: flex;
+  flex-direction: row;
+  & .content {
+    flex: 1;
+  }
+}*/

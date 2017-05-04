@@ -1,0 +1,4 @@
+#!/bin/bash
+MAILTO=""
+/usr/bin/certbot-auto certonly -c /www/letsencrypt/idr-api.ini --renew-by-default
+sleep 5; service nginx restart

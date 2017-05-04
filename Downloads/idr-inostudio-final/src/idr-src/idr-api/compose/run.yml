@@ -1,0 +1,19 @@
+version: '2'
+services:
+  percona:
+    extends:
+      file: common.yml
+      service: percona
+  elasticsearch:
+    extends:
+      file: common.yml
+      service: elasticsearch
+  server:
+    extends:
+      file: common.yml
+      service: server
+    links:
+      - elasticsearch
+      - percona
+    ports:
+      - 5000:5000
